@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -601,4 +602,609 @@
     <script src="main.js"></script>
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remedy Search & Combine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --primary-color: #4CAF50;
+            --secondary-bg: #2d2d2d;
+            --border-color: #444;
+            --hover-bg: #3d3d3d;
+            --accent-color: #66bb6a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-bar svg {
+            fill: #aaa;
+            width: 20px;
+            height: 20px;
+        }
+
+        .image-filter-btn {
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 12px;
+            user-select: none;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .image-filter-btn:hover {
+            transform: scale(1.2);
+        }
+
+        #search-results {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .result-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .result-item:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item.has-image {
+            color: var(--accent-color);
+            background-color: rgba(102, 187, 106, 0.05);
+            font-weight: 500;
+        }
+
+        .has-image-icon {
+            float: right;
+            font-size: 16px;
+        }
+
+        /* Alphabet Buttons */
+        .alphabet-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .alpha-btn {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 4px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .alpha-btn:hover,
+        .alpha-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Name Heading */
+        .remedy-name {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            min-height: 34px;
+        }
+
+        /* Source Boxes */
+        .sources-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .source-box {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: none;
+            /* Hidden until a remedy is selected */
+        }
+
+        .source-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid transparent;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .source-box.expanded .source-header {
+            border-bottom-color: var(--border-color);
+        }
+
+        .header-checkbox {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .source-title {
+            flex: 1;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s;
+        }
+
+        .source-box.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .source-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+
+        .source-box.expanded .source-content {
+            padding: 15px;
+            max-height: 2000px;
+        }
+
+        .section-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+
+        .section-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-checkbox {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .section-label {
+            cursor: pointer;
+            text-transform: capitalize;
+        }
+
+        /* Combine Button */
+        button.combine-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        button.combine-btn:hover {
+            background: #43a047;
+        }
+
+        /* Request Button */
+        button.request-btn {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin: 10px auto;
+            display: inline-block;
+        }
+
+        button.request-btn:hover {
+            background: #e67e22;
+        }
+
+        button.request-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+            color: #aaa;
+        }
+
+        .img-loading-text {
+            color: #aaa;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        /* Result Area */
+        .result-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .result-container label {
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        textarea.result-text {
+            width: 100%;
+            height: 300px;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            padding: 15px;
+            font-family: inherit;
+            font-size: 15px;
+            line-height: 1.6;
+            resize: vertical;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        textarea.result-text:focus {
+            border-color: var(--primary-color);
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 26, 26, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Fullscreen Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-modal img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .image-modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s;
+        }
+
+        .image-modal .close-btn:hover {
+            color: var(--primary-color);
+        }
+
+        #login-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .google-btn {
+            background-color: white;
+            color: #757575;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.2s;
+            margin-top: 20px;
+        }
+
+        .google-btn:hover {
+            background-color: #f1f1f1;
+        }
+
+        .logout-container {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .logout-btn {
+            background: transparent;
+            color: #ff5252;
+            border: 1px solid #ff5252;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #ff5252;
+            color: white;
+        }
+
+        #admin-link {
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        #admin-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="app-container">
+
+        <div id="admin-link">
+            <a href="request.html">View Requested Mind Maps Mode (Admin Only) -></a>
+        </div>
+
+        <!-- Search area -->
+        <div class="search-container">
+            <div class="search-bar">
+                <div id="imageFilterBtn" class="image-filter-btn" title="Show only remedies with images">🖼️</div>
+                <input type="text" id="searchInput" placeholder="Search remedy..." autocomplete="off">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+            </div>
+            <button id="mergeBtn" class="combine-btn"
+                style="display: none; background: #9b59b6; margin: 5px 0; padding: 10px; font-size: 15px;"
+                onclick="performMerge()">Merge Selected</button>
+            <div id="search-results" style="top: 100px;"></div>
+
+            <div class="alphabet-container" id="alphabet-container">
+                <!-- A-Z buttons will be injected here -->
+                <div class="alpha-btn">A</div>
+                <div class="alpha-btn">B</div>
+                <div class="alpha-btn">C</div>
+                <div class="alpha-btn">D</div>
+                <div class="alpha-btn">E</div>
+                <div class="alpha-btn">F</div>
+                <div class="alpha-btn">G</div>
+                <div class="alpha-btn">H</div>
+                <div class="alpha-btn">I</div>
+                <div class="alpha-btn">J</div>
+                <div class="alpha-btn">K</div>
+                <div class="alpha-btn">L</div>
+                <div class="alpha-btn">M</div>
+                <div class="alpha-btn">N</div>
+                <div class="alpha-btn">O</div>
+                <div class="alpha-btn">P</div>
+                <div class="alpha-btn">Q</div>
+                <div class="alpha-btn">R</div>
+                <div class="alpha-btn">S</div>
+                <div class="alpha-btn">T</div>
+                <div class="alpha-btn">U</div>
+                <div class="alpha-btn">V</div>
+                <div class="alpha-btn">W</div>
+                <div class="alpha-btn">X</div>
+                <div class="alpha-btn">Y</div>
+                <div class="alpha-btn">Z</div>
+            </div>
+        </div>
+
+        <div class="remedy-name" id="remedy-name">Select a Remedy</div>
+
+        <div id="remedy-image-area" style="display: none; text-align: center; margin-bottom: 20px;">
+            <!-- Loading Indicator -->
+            <div id="image-loading" class="img-loading-text" style="display: none;">Loading Image...</div>
+
+            <!-- Result Image (Thumbnail) -->
+            <img id="remedy-image" src="" alt="Remedy Image"
+                style="max-width: 100%; max-height: 300px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); cursor: pointer; display: none;"
+                onclick="openFullscreenImage()">
+        </div>
+
+        <!-- <div id="request-map-area" style="display: none; text-align: center; margin-bottom: 20px;">
+            <button id="requestBtn" class="request-btn" onclick="requestMindMap()">Request Mind Map</button>
+        </div> -->
+
+        <div class="sources-container" id="sources-container">
+
+            <!-- Allens -->
+            <div class="source-box" id="box-allens">
+                <div class="source-header" onclick="toggleSource('allens')">
+                    <input type="checkbox" class="header-checkbox" id="check-allens"
+                        onclick="event.stopPropagation(); toggleAllSections('allens', this.checked)">
+                    <div class="source-title">ALLENS</div>
+                    <svg class="expand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0"
+                        stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="source-content" id="content-allens">
+                    <!-- Checkboxes injected here -->
+                </div>
+            </div>
+
+            <!-- Gems -->
+            <div class="source-box" id="box-gems">
+                <div class="source-header" onclick="toggleSource('gems')">
+                    <input type="checkbox" class="header-checkbox" id="check-gems"
+                        onclick="event.stopPropagation(); toggleAllSections('gems', this.checked)">
+                    <div class="source-title">GEMS</div>
+                    <svg class="expand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0"
+                        stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="source-content" id="content-gems">
+                    <!-- Checkboxes injected here -->
+                </div>
+            </div>
+
+            <!-- Boericke -->
+            <div class="source-box" id="box-boericke">
+                <div class="source-header" onclick="toggleSource('boericke')">
+                    <input type="checkbox" class="header-checkbox" id="check-boericke"
+                        onclick="event.stopPropagation(); toggleAllSections('boericke', this.checked)">
+                    <div class="source-title">BOERICKE</div>
+                    <svg class="expand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e0e0e0"
+                        stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="source-content" id="content-boericke">
+                    <!-- Checkboxes injected here -->
+                </div>
+            </div>
+
+        </div>
+
+        <button class="combine-btn" id="combineBtn" onclick="combineData()">Combine</button>
+
+        <div class="result-container">
+            <label>RESULT IN TEXT</label>
+            <textarea class="result-text" id="resultText"
+                placeholder="Combined paragraphs will appear here..."></textarea>
+        </div>
+
+        <div class="logout-container">
+            <button class="logout-btn" onclick="signOut()">Log Out</button>
+        </div>
+
+    </div>
+
+
+    <!-- Fullscreen Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeFullscreenImage()">
+        <span class="close-btn" onclick="closeFullscreenImage()">&times;</span>
+        <img id="modalImage" src="" alt="Fullscreen Remedy">
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+>>>>>>> 4d7c3df (Consolidated data structure and updated search logic)
 </html>
