@@ -581,7 +581,8 @@
       "Aurum metallicum": {
         "A": "Aurum metallicum",
         "G": "Aurum metallicum",
-        "B": "Aurum Metallicum"
+        "B": "Aurum Metallicum",
+        "I": "AURUM METALLICUM.png"
       }
     },
     {
@@ -48013,5 +48014,5 @@
       }
     ]
   },
-  "image_count": 108
+  "image_count": 109
 }
