@@ -534,7 +534,8 @@
     {
       "Asa foetida": {
         "G": "Asa foetida",
-        "B": "Asa Foetida (Asafoetida)"
+        "B": "Asa Foetida (Asafoetida)",
+        "I": "ASA FOETIDA.png"
       }
     },
     {
@@ -48015,5 +48016,5 @@
       }
     ]
   },
-  "image_count": 110
+  "image_count": 111
 }
