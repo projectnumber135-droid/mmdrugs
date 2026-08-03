@@ -2794,7 +2794,8 @@
       "Nitricum acidum": {
         "A": "Nitricum acidum",
         "G": "Nitricum acidum",
-        "B": "Nitricum Acidum"
+        "B": "Nitricum Acidum",
+        "I": "NITRICUM ACIDUM.png"
       }
     },
     {
@@ -48019,5 +48020,5 @@
       }
     ]
   },
-  "image_count": 114
+  "image_count": 115
 }
