@@ -571,7 +571,8 @@
     },
     {
       "Asterias Rubens": {
-        "B": "Asterias Rubens"
+        "B": "Asterias Rubens",
+        "I": "ASTERIAS RUBENS.png"
       }
     },
     {
@@ -956,8 +957,7 @@
       "Capsicum annuum": {
         "A": "Capsicum annuum",
         "G": "Capsicum annuum",
-        "B": "Capsicum Annuum (Capsicum)",
-        "I": "CAPSICUM ANNUUM.png"
+        "B": "Capsicum Annuum (Capsicum)"
       }
     },
     {
