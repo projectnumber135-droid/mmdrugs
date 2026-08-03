@@ -2794,8 +2794,7 @@
       "Nitricum acidum": {
         "A": "Nitricum acidum",
         "G": "Nitricum acidum",
-        "B": "Nitricum Acidum",
-        "I": "NITRICUM ACIDUM.png"
+        "B": "Nitricum Acidum"
       }
     },
     {
@@ -3051,7 +3050,8 @@
     {
       "Picricum acidum": {
         "A": "Picricum acidum",
-        "B": "Picricum Acidum"
+        "B": "Picricum Acidum",
+        "I": "PICRICUM ACIDUM.png"
       }
     },
     {
