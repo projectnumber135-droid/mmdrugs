@@ -956,7 +956,8 @@
       "Capsicum annuum": {
         "A": "Capsicum annuum",
         "G": "Capsicum annuum",
-        "B": "Capsicum Annuum (Capsicum)"
+        "B": "Capsicum Annuum (Capsicum)",
+        "I": "CAPSICUM ANNUUM.png"
       }
     },
     {
@@ -48016,5 +48017,5 @@
       }
     ]
   },
-  "image_count": 111
+  "image_count": 112
 }
