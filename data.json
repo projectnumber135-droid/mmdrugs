@@ -1052,7 +1052,8 @@
       "Caulophyllum thalictroides": {
         "A": "Caulophyllum thalictroides",
         "G": "Caulophyllum thalictroides",
-        "B": "Caulophyllum Thalictroides (Caulophyllum)"
+        "B": "Caulophyllum Thalictroides (Caulophyllum)",
+        "I": "CAULOPHYLLUM THALICTROIDES.png"
       }
     },
     {
@@ -48017,5 +48018,5 @@
       }
     ]
   },
-  "image_count": 112
+  "image_count": 113
 }
