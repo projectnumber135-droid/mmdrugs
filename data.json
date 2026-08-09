@@ -714,7 +714,8 @@
     },
     {
       "Bismuthum Subnitricum (Bismuthum)": {
-        "B": "Bismuthum Subnitricum (Bismuthum)"
+        "B": "Bismuthum Subnitricum (Bismuthum)",
+        "I": "BISMUTHUM SUBNITRICUM (BISMUTHUM).png"
       }
     },
     {
@@ -48021,5 +48022,5 @@
       }
     ]
   },
-  "image_count": 116
+  "image_count": 117
 }
