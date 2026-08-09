@@ -714,8 +714,7 @@
     },
     {
       "Bismuthum Subnitricum (Bismuthum)": {
-        "B": "Bismuthum Subnitricum (Bismuthum)",
-        "I": "BISMUTHUM SUBNITRICUM (BISMUTHUM).png"
+        "B": "Bismuthum Subnitricum (Bismuthum)"
       }
     },
     {
@@ -760,7 +759,8 @@
     {
       "Bovista lycoperdon": {
         "A": "Bovista lycoperdon",
-        "B": "Bovista Lycoperdon (Bovista)"
+        "B": "Bovista Lycoperdon (Bovista)",
+        "I": "BOVISTA LYCOPERDON.png"
       }
     },
     {
