@@ -1839,8 +1839,7 @@
       "Graphites": {
         "A": "Graphites",
         "G": "Graphites",
-        "B": "Graphites",
-        "I": "GRAPHITES.png"
+        "B": "Graphites"
       }
     },
     {
@@ -2799,7 +2798,8 @@
       "Nitricum acidum": {
         "A": "Nitricum acidum",
         "G": "Nitricum acidum",
-        "B": "Nitricum Acidum"
+        "B": "Nitricum Acidum",
+        "I": "NITRICUM ACIDUM.png"
       }
     },
     {
