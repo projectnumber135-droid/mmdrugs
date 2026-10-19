@@ -982,8 +982,7 @@
     {
       "Carbolicum acidum": {
         "A": "Carbolicum acidum",
-        "B": "Carbolicum Acidum",
-        "I": "CARBOLICUM ACIDUM.png"
+        "B": "Carbolicum Acidum"
       }
     },
     {
@@ -1840,7 +1839,8 @@
       "Graphites": {
         "A": "Graphites",
         "G": "Graphites",
-        "B": "Graphites"
+        "B": "Graphites",
+        "I": "GRAPHITES.png"
       }
     },
     {
