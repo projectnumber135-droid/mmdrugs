@@ -982,7 +982,8 @@
     {
       "Carbolicum acidum": {
         "A": "Carbolicum acidum",
-        "B": "Carbolicum Acidum"
+        "B": "Carbolicum Acidum",
+        "I": "CARBOLICUM ACIDUM.png"
       }
     },
     {
@@ -48024,5 +48025,5 @@
       }
     ]
   },
-  "image_count": 119
+  "image_count": 120
 }
