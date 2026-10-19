@@ -10,8 +10,7 @@
     {
       "Abies nigra": {
         "G": "Abies nigra",
-        "B": "Abies Nigra",
-        "I": "ABIES NIGRA.jpg"
+        "B": "Abies Nigra"
       }
     },
     {
@@ -715,7 +714,8 @@
     },
     {
       "Bismuthum Subnitricum (Bismuthum)": {
-        "B": "Bismuthum Subnitricum (Bismuthum)"
+        "B": "Bismuthum Subnitricum (Bismuthum)",
+        "I": "BISMUTHUM SUBNITRICUM (BISMUTHUM).png"
       }
     },
     {
