@@ -1379,7 +1379,8 @@
     {
       "Crocus sativus": {
         "A": "Crocus sativus",
-        "B": "Crocus Sativus (Crocus Satia)"
+        "B": "Crocus Sativus (Crocus Satia)",
+        "I": "CROCUS SATIVUS.png"
       }
     },
     {
@@ -3659,8 +3660,7 @@
     {
       "Sulphuricum acidum": {
         "A": "Sulphuricum acidum",
-        "B": "Sulphuricum Acidum",
-        "I": "SULPHURICUM ACIDUM.png"
+        "B": "Sulphuricum Acidum"
       }
     },
     {
