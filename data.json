@@ -982,8 +982,7 @@
     {
       "Carbolicum acidum": {
         "A": "Carbolicum acidum",
-        "B": "Carbolicum Acidum",
-        "I": "CARBOLICUM ACIDUM.png"
+        "B": "Carbolicum Acidum"
       }
     },
     {
@@ -3660,7 +3659,8 @@
     {
       "Sulphuricum acidum": {
         "A": "Sulphuricum acidum",
-        "B": "Sulphuricum Acidum"
+        "B": "Sulphuricum Acidum",
+        "I": "SULPHURICUM ACIDUM.png"
       }
     },
     {
