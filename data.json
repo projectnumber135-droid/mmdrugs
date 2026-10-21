@@ -2361,7 +2361,8 @@
       "Lilium tigrinum": {
         "A": "Lilium tigrinum",
         "G": "Lilium tigrinum",
-        "B": "Lilium Tigrinum"
+        "B": "Lilium Tigrinum",
+        "I": "LILIUM TIGRINUM.png"
       }
     },
     {
@@ -2685,8 +2686,7 @@
       "Muriaticum acidum": {
         "A": "Muriaticum acidum",
         "G": "Muriaticum acidum",
-        "B": "Muriaticum Acidum",
-        "I": "MURIATICUM ACIDUM.png"
+        "B": "Muriaticum Acidum"
       }
     },
     {
