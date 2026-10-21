@@ -3663,7 +3663,8 @@
     {
       "Sulphuricum acidum": {
         "A": "Sulphuricum acidum",
-        "B": "Sulphuricum Acidum"
+        "B": "Sulphuricum Acidum",
+        "I": "SULPHURICUM ACIDUM.png"
       }
     },
     {
@@ -48030,5 +48031,5 @@
       }
     ]
   },
-  "image_count": 125
+  "image_count": 126
 }
