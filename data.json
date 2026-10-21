@@ -1332,7 +1332,8 @@
       "Conium maculatum": {
         "A": "Conium maculatum",
         "G": "Conium maculatum",
-        "B": "Conium Maculatum (Conium)"
+        "B": "Conium Maculatum (Conium)",
+        "I": "CONIUM MACULATUM.png"
       }
     },
     {
@@ -1379,8 +1380,7 @@
     {
       "Crocus sativus": {
         "A": "Crocus sativus",
-        "B": "Crocus Sativus (Crocus Satia)",
-        "I": "CROCUS SATIVUS.png"
+        "B": "Crocus Sativus (Crocus Satia)"
       }
     },
     {
