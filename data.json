@@ -1381,7 +1381,8 @@
     {
       "Crocus sativus": {
         "A": "Crocus sativus",
-        "B": "Crocus Sativus (Crocus Satia)"
+        "B": "Crocus Sativus (Crocus Satia)",
+        "I": "CROCUS SATIVUS.png"
       }
     },
     {
@@ -3238,8 +3239,7 @@
     },
     {
       "Raphanus Sativus (Raphanus)": {
-        "B": "Raphanus Sativus (Raphanus)",
-        "I": "RAPHANUS SATIVUS (RAPHANUS).png"
+        "B": "Raphanus Sativus (Raphanus)"
       }
     },
     {
