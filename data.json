@@ -1312,7 +1312,8 @@
     {
       "Collinsonia canadensis": {
         "A": "Collinsonia canadensis",
-        "B": "Collinsonia Canadensis"
+        "B": "Collinsonia Canadensis",
+        "I": "COLLINSONIA CANADENSIS.png"
       }
     },
     {
@@ -2361,8 +2362,7 @@
       "Lilium tigrinum": {
         "A": "Lilium tigrinum",
         "G": "Lilium tigrinum",
-        "B": "Lilium Tigrinum",
-        "I": "LILIUM TIGRINUM.png"
+        "B": "Lilium Tigrinum"
       }
     },
     {
