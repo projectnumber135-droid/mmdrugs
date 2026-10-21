@@ -1448,8 +1448,7 @@
       "Cyclamen europaeum": {
         "A": "Cyclamen europaeum",
         "G": "Cyclamen europaeum",
-        "B": "Cyclamen Europaeum (Cyclamen)",
-        "I": "CYCLAMEN EUROPAEUM.png"
+        "B": "Cyclamen Europaeum (Cyclamen)"
       }
     },
     {
@@ -3236,7 +3235,8 @@
     },
     {
       "Raphanus Sativus (Raphanus)": {
-        "B": "Raphanus Sativus (Raphanus)"
+        "B": "Raphanus Sativus (Raphanus)",
+        "I": "RAPHANUS SATIVUS (RAPHANUS).png"
       }
     },
     {
