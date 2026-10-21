@@ -2685,7 +2685,8 @@
       "Muriaticum acidum": {
         "A": "Muriaticum acidum",
         "G": "Muriaticum acidum",
-        "B": "Muriaticum Acidum"
+        "B": "Muriaticum Acidum",
+        "I": "MURIATICUM ACIDUM.png"
       }
     },
     {
@@ -48028,5 +48029,5 @@
       }
     ]
   },
-  "image_count": 123
+  "image_count": 124
 }
