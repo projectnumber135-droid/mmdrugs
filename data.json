@@ -2071,8 +2071,7 @@
       "Iodium": {
         "A": "Iodium",
         "G": "Iodium",
-        "B": "Iodium (Iodum)",
-        "I": "IODIUM.png"
+        "B": "Iodium (Iodum)"
       }
     },
     {
@@ -2678,7 +2677,8 @@
       "Murex purpurea": {
         "A": "Murex purpurea",
         "G": "Murex purpurea",
-        "B": "Murex Purpurea (Murex)"
+        "B": "Murex Purpurea (Murex)",
+        "I": "MUREX PURPUREA.png"
       }
     },
     {
