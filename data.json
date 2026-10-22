@@ -1265,8 +1265,7 @@
       "Conium maculatum": {
         "A": "Conium maculatum",
         "G": "Conium maculatum",
-        "B": "Conium Maculatum (Conium)",
-        "I": "CONIUM MACULATUM.png"
+        "B": "Conium Maculatum (Conium)"
       }
     },
     {
@@ -47905,6 +47904,5 @@
         }
       }
     ]
-  },
-  "image_count": 1
+  }
 }
