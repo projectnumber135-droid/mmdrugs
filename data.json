@@ -3,7 +3,8 @@
     {
       "Abies canadensis": {
         "G": "Abies canadensis",
-        "B": "Abies Canadensis-Pinus Canadensis"
+        "B": "Abies Canadensis-Pinus Canadensis",
+        "I": "ABIES CANADENSIS.png"
       }
     },
     {
@@ -47904,5 +47905,6 @@
         }
       }
     ]
-  }
+  },
+  "image_count": 1
 }
