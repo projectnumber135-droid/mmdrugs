@@ -3,8 +3,7 @@
     {
       "Abies canadensis": {
         "G": "Abies canadensis",
-        "B": "Abies Canadensis-Pinus Canadensis",
-        "I": "ABIES CANADENSIS.png"
+        "B": "Abies Canadensis-Pinus Canadensis"
       }
     },
     {
@@ -17,8 +16,7 @@
       "Abrotanum": {
         "A": "Abrotanum",
         "G": "Abrotanum",
-        "B": "Abrotanum",
-        "I": "ABROTANUM.png"
+        "B": "Abrotanum"
       }
     },
     {
@@ -46,23 +44,20 @@
       "Aceticum acidum": {
         "A": "Aceticum acidum",
         "G": "Aceticum acidum",
-        "B": "Aceticum Acidum (Acetic Acid)",
-        "I": "ACETICUM ACIDUM.png"
+        "B": "Aceticum Acidum (Acetic Acid)"
       }
     },
     {
       "Aconitum napellus": {
         "A": "Aconitum napellus",
         "G": "Aconitum napellus",
-        "B": "Aconitum Napellus",
-        "I": "ACONITUM NAPELLUS.png"
+        "B": "Aconitum Napellus"
       }
     },
     {
       "Actaea racemosa": {
         "A": "Actaea racemosa",
-        "G": "Actaea racemosa (Cimicifuga)",
-        "I": "ACTAEA RACEMOSA.png"
+        "G": "Actaea racemosa (Cimicifuga)"
       }
     },
     {
@@ -85,8 +80,7 @@
       "Aesculus hippocastanum": {
         "A": "Aesculus hippocastanum",
         "G": "Aesculus hippocastanum",
-        "B": "Aesculus Hippocastanum",
-        "I": "AESCULUS HIPPOCASTANUM.png"
+        "B": "Aesculus Hippocastanum"
       }
     },
     {
@@ -98,16 +92,14 @@
       "Aethusa cynapium": {
         "A": "Aethusa cynapium",
         "G": "Aethusa cynapium",
-        "B": "Aethusa Cynapium",
-        "I": "AETHUSA CYNAPIUM.png"
+        "B": "Aethusa Cynapium"
       }
     },
     {
       "Agaricus muscarius": {
         "A": "Agaricus muscarius",
         "G": "Agaricus muscarius",
-        "B": "Agaricus Muscarius (Agaricus Muscarius-Amanita)",
-        "I": "AGARICUS MUSCARIUS.png"
+        "B": "Agaricus Muscarius (Agaricus Muscarius-Amanita)"
       }
     },
     {
@@ -119,8 +111,7 @@
       "Agnus castus": {
         "A": "Agnus castus",
         "G": "Agnus castus",
-        "B": "Agnus Castus",
-        "I": "AGNUS CASTUS.png"
+        "B": "Agnus Castus"
       }
     },
     {
@@ -147,8 +138,7 @@
       "Allium cepa": {
         "A": "Allium cepa",
         "G": "Allium cepa",
-        "B": "Allium Cepa",
-        "I": "ALLIUM CEPA.png"
+        "B": "Allium Cepa"
       }
     },
     {
@@ -165,8 +155,7 @@
       "Aloe socotrina": {
         "A": "Aloe socotrina",
         "G": "Aloe socotrina",
-        "B": "Aloe Socotrina (Aloe)",
-        "I": "ALOE SOCOTRINA.png"
+        "B": "Aloe Socotrina (Aloe)"
       }
     },
     {
@@ -182,8 +171,7 @@
     {
       "Alumina": {
         "A": "Alumina",
-        "B": "Alumina",
-        "I": "ALUMINA.png"
+        "B": "Alumina"
       }
     },
     {
@@ -200,8 +188,7 @@
       "Ambra grisea": {
         "A": "Ambra grisea",
         "G": "Ambra grisea",
-        "B": "Ambra Grisea",
-        "I": "AMBRA GRISEA.png"
+        "B": "Ambra Grisea"
       }
     },
     {
@@ -227,8 +214,7 @@
     {
       "Ammonium carbonicum": {
         "A": "Ammonium carbonicum",
-        "B": "Ammonium Carbonicum (Ammonium Carb)",
-        "I": "AMMONIUM CARBONICUM.png"
+        "B": "Ammonium Carbonicum (Ammonium Carb)"
       }
     },
     {
@@ -244,8 +230,7 @@
     {
       "Ammonium muriaticum": {
         "A": "Ammonium muriaticum",
-        "B": "Ammonium Muriaticum",
-        "I": "AMMONIUM MURIATICUM.png"
+        "B": "Ammonium Muriaticum"
       }
     },
     {
@@ -283,8 +268,7 @@
       "Anacardium orientale": {
         "A": "Anacardium orientale",
         "G": "Anacardium orientale",
-        "B": "Anacardium Orientale (Anacardium)",
-        "I": "ANACARDIUM ORIENTALE.png"
+        "B": "Anacardium Orientale (Anacardium)"
       }
     },
     {
@@ -340,16 +324,14 @@
     },
     {
       "Antimonium Arsenicosum": {
-        "B": "Antimonium Arsenicosum",
-        "I": "ANTIMONIUM ARSENICOSUM.png"
+        "B": "Antimonium Arsenicosum"
       }
     },
     {
       "Antimonium crudum": {
         "A": "Antimonium crudum",
         "G": "Antimonium crudum",
-        "B": "Antimonium Crudum",
-        "I": "ANTIMONIUM CRUDUM.png"
+        "B": "Antimonium Crudum"
       }
     },
     {
@@ -361,8 +343,7 @@
       "Antimonium tartaricum": {
         "A": "Antimonium tartaricum",
         "G": "Antimonium tartaricum",
-        "B": "Antimonium Tartaricum",
-        "I": "ANTIMONIUM TARTARICUM.png"
+        "B": "Antimonium Tartaricum"
       }
     },
     {
@@ -379,8 +360,7 @@
       "Apis mellifica": {
         "A": "Apis mellifica",
         "G": "Apis mellifica",
-        "B": "Apis Mellifica",
-        "I": "APIS MELLIFICA.png"
+        "B": "Apis Mellifica"
       }
     },
     {
@@ -396,8 +376,7 @@
     {
       "Apocynum cannabinum": {
         "A": "Apocynum cannabinum",
-        "B": "Apocynum Cannabinum",
-        "I": "APOCYNUM CANNABINUM.png"
+        "B": "Apocynum Cannabinum"
       }
     },
     {
@@ -444,16 +423,14 @@
       "Argentum metallicum": {
         "A": "Argentum metallicum",
         "G": "Argentum metallicum",
-        "B": "Argentum Metallicum",
-        "I": "ARGENTUM METALLICUM.png"
+        "B": "Argentum Metallicum"
       }
     },
     {
       "Argentum nitricum": {
         "A": "Argentum nitricum",
         "G": "Argentum nitricum",
-        "B": "Argentum Nitricum",
-        "I": "ARGENTUM NITRICUM.png"
+        "B": "Argentum Nitricum"
       }
     },
     {
@@ -465,16 +442,14 @@
       "Arnica montana": {
         "A": "Arnica montana",
         "G": "Arnica montana",
-        "B": "Arnica Montana (Arnica)",
-        "I": "ARNICA MONTANA.png"
+        "B": "Arnica Montana (Arnica)"
       }
     },
     {
       "Arsenicum album": {
         "A": "Arsenicum album",
         "G": "Arsenicum album",
-        "B": "Arsenicum Album",
-        "I": "ARSENICUM ALBUM.png"
+        "B": "Arsenicum Album"
       }
     },
     {
@@ -490,8 +465,7 @@
     {
       "Arsenicum iodatum": {
         "G": "Arsenicum iodatum",
-        "B": "Arsenicum Iodatum",
-        "I": "ARSENICUM IODATUM.png"
+        "B": "Arsenicum Iodatum"
       }
     },
     {
@@ -523,8 +497,7 @@
       "Arum triphyllum": {
         "A": "Arum triphyllum",
         "G": "Arum triphyllum",
-        "B": "Arum Triphyllum",
-        "I": "ARUM TRIPHYLLUM.png"
+        "B": "Arum Triphyllum"
       }
     },
     {
@@ -535,8 +508,7 @@
     {
       "Asa foetida": {
         "G": "Asa foetida",
-        "B": "Asa Foetida (Asafoetida)",
-        "I": "ASA FOETIDA.png"
+        "B": "Asa Foetida (Asafoetida)"
       }
     },
     {
@@ -572,8 +544,7 @@
     },
     {
       "Asterias Rubens": {
-        "B": "Asterias Rubens",
-        "I": "ASTERIAS RUBENS.png"
+        "B": "Asterias Rubens"
       }
     },
     {
@@ -585,8 +556,7 @@
       "Aurum metallicum": {
         "A": "Aurum metallicum",
         "G": "Aurum metallicum",
-        "B": "Aurum Metallicum",
-        "I": "AURUM METALLICUM.png"
+        "B": "Aurum Metallicum"
       }
     },
     {
@@ -624,8 +594,7 @@
       "Baptisia tinctoria": {
         "A": "Baptisia tinctoria",
         "G": "Baptisia tinctoria",
-        "B": "Baptisia Tinctoria (Baptisia)",
-        "I": "BAPTISIA TINCTORIA.png"
+        "B": "Baptisia Tinctoria (Baptisia)"
       }
     },
     {
@@ -642,8 +611,7 @@
       "Baryta carbonica": {
         "A": "Baryta carbonica",
         "G": "Baryta carbonica",
-        "B": "Baryta Carbonica (Baryta Carb)",
-        "I": "BARYTA CARBONICA.png"
+        "B": "Baryta Carbonica (Baryta Carb)"
       }
     },
     {
@@ -661,15 +629,13 @@
       "Belladonna": {
         "A": "Belladonna",
         "G": "Belladonna",
-        "B": "Belladonna",
-        "I": "BELLADONNA.png"
+        "B": "Belladonna"
       }
     },
     {
       "Bellis perennis": {
         "G": "Bellis perennis",
-        "B": "Bellis Perennis",
-        "I": "BELLIS PERENNIS.png"
+        "B": "Bellis Perennis"
       }
     },
     {
@@ -693,8 +659,7 @@
       "Berberis vulgaris": {
         "A": "Berberis vulgaris",
         "G": "Berberis vulgaris",
-        "B": "Berberis Vulgaris",
-        "I": "BERBERIS VULGARIS.png"
+        "B": "Berberis Vulgaris"
       }
     },
     {
@@ -714,8 +679,7 @@
     },
     {
       "Bismuthum Subnitricum (Bismuthum)": {
-        "B": "Bismuthum Subnitricum (Bismuthum)",
-        "I": "BISMUTHUM SUBNITRICUM (BISMUTHUM).png"
+        "B": "Bismuthum Subnitricum (Bismuthum)"
       }
     },
     {
@@ -738,8 +702,7 @@
       "Borax veneta": {
         "A": "Borax veneta",
         "G": "Borax veneta",
-        "B": "Borax Veneta (Borax)",
-        "I": "BORAX VENETA.png"
+        "B": "Borax Veneta (Borax)"
       }
     },
     {
@@ -760,8 +723,7 @@
     {
       "Bovista lycoperdon": {
         "A": "Bovista lycoperdon",
-        "B": "Bovista Lycoperdon (Bovista)",
-        "I": "BOVISTA LYCOPERDON.png"
+        "B": "Bovista Lycoperdon (Bovista)"
       }
     },
     {
@@ -773,16 +735,14 @@
       "Bromium": {
         "A": "Bromium",
         "G": "Bromium",
-        "B": "Bromium (Bromum)",
-        "I": "BROMIUM.png"
+        "B": "Bromium (Bromum)"
       }
     },
     {
       "Bryonia alba": {
         "A": "Bryonia alba",
         "G": "Bryonia alba",
-        "B": "Bryonia Alba (Bryonia)",
-        "I": "BRYONIA ALBA.png"
+        "B": "Bryonia Alba (Bryonia)"
       }
     },
     {
@@ -800,8 +760,7 @@
       "Cactus grandiflorus": {
         "A": "Cactus grandiflorus",
         "G": "Cactus grandiflorus",
-        "B": "Cactus Grandiflorus (Selenicereus Spinulosus)",
-        "I": "CACTUS GRANDIFLORUS.png"
+        "B": "Cactus Grandiflorus (Selenicereus Spinulosus)"
       }
     },
     {
@@ -839,28 +798,24 @@
     {
       "Calcarea arsenicosa": {
         "A": "Calcarea arsenicosa",
-        "B": "Calcarea Arsenicosa (Calcarea Arsenica)",
-        "I": "CALCAREA ARSENICOSA.png"
+        "B": "Calcarea Arsenicosa (Calcarea Arsenica)"
       }
     },
     {
       "Calcarea carbonica": {
         "G": "Calcarea carbonica",
-        "B": "Calcarea Carbonica (Calcarea Carbonica - Ostrearum)",
-        "I": "CALCAREA CARBONICA.png"
+        "B": "Calcarea Carbonica (Calcarea Carbonica - Ostrearum)"
       }
     },
     {
       "Calcarea fluorica": {
         "G": "Calcarea fluorica",
-        "B": "Calcarea Fluorica (Fluor Spar)",
-        "I": "CALCAREA FLUORICA.png"
+        "B": "Calcarea Fluorica (Fluor Spar)"
       }
     },
     {
       "Calcarea Iodata": {
-        "B": "Calcarea Iodata",
-        "I": "CALCAREA IODATA.png"
+        "B": "Calcarea Iodata"
       }
     },
     {
@@ -872,8 +827,7 @@
       "Calcarea phosphorica": {
         "A": "Calcarea phosphorica",
         "G": "Calcarea phosphorica",
-        "B": "Calcarea Phosphorica",
-        "I": "CALCAREA PHOSPHORICA.png"
+        "B": "Calcarea Phosphorica"
       }
     },
     {
@@ -884,16 +838,14 @@
     {
       "Calcarea sulphurica": {
         "G": "Calcarea sulphurica",
-        "B": "Calcarea Sulphurica",
-        "I": "CALCAREA SULPHURICA.png"
+        "B": "Calcarea Sulphurica"
       }
     },
     {
       "Calendula officinalis": {
         "A": "Calendula officinalis",
         "G": "Calendula officinalis",
-        "B": "Calendula Officinalis",
-        "I": "CALENDULA OFFICINALIS.png"
+        "B": "Calendula Officinalis"
       }
     },
     {
@@ -919,8 +871,7 @@
     {
       "Camphora officinalis": {
         "A": "Camphora officinalis",
-        "G": "Camphora officinalis",
-        "I": "CAMPHORA OFFICINALIS.png"
+        "G": "Camphora officinalis"
       }
     },
     {
@@ -932,16 +883,14 @@
       "Cannabis indica": {
         "A": "Cannabis indica",
         "G": "Cannabis indica",
-        "B": "Cannabis Indica",
-        "I": "CANNABIS INDICA.png"
+        "B": "Cannabis Indica"
       }
     },
     {
       "Cannabis sativa": {
         "A": "Cannabis sativa",
         "G": "Cannabis sativa",
-        "B": "Cannabis Sativa",
-        "I": "CANNABIS SATIVA.png"
+        "B": "Cannabis Sativa"
       }
     },
     {
@@ -952,16 +901,14 @@
     {
       "Cantharis vesicatoria": {
         "A": "Cantharis vesicatoria",
-        "B": "Cantharis Vesicatoria (Cantharis)",
-        "I": "CANTHARIS VESICATORIA.png"
+        "B": "Cantharis Vesicatoria (Cantharis)"
       }
     },
     {
       "Capsicum annuum": {
         "A": "Capsicum annuum",
         "G": "Capsicum annuum",
-        "B": "Capsicum Annuum (Capsicum)",
-        "I": "CAPSICUM ANNUUM.png"
+        "B": "Capsicum Annuum (Capsicum)"
       }
     },
     {
@@ -975,15 +922,13 @@
       "Carbo vegetabilis": {
         "A": "Carbo vegetabilis",
         "G": "Carbo vegetabilis",
-        "B": "Carbo Vegetabilis",
-        "I": "CARBO VEGETABILIS.png"
+        "B": "Carbo Vegetabilis"
       }
     },
     {
       "Carbolicum acidum": {
         "A": "Carbolicum acidum",
-        "B": "Carbolicum Acidum",
-        "I": "CARBOLICUM ACIDUM.png"
+        "B": "Carbolicum Acidum"
       }
     },
     {
@@ -1014,8 +959,7 @@
     {
       "Carduus marianus": {
         "G": "Carduus marianus",
-        "B": "Carduus Marianus",
-        "I": "CARDUUS MARIANUS.png"
+        "B": "Carduus Marianus"
       }
     },
     {
@@ -1057,22 +1001,19 @@
       "Caulophyllum thalictroides": {
         "A": "Caulophyllum thalictroides",
         "G": "Caulophyllum thalictroides",
-        "B": "Caulophyllum Thalictroides (Caulophyllum)",
-        "I": "CAULOPHYLLUM THALICTROIDES.png"
+        "B": "Caulophyllum Thalictroides (Caulophyllum)"
       }
     },
     {
       "Causticum": {
         "A": "Causticum",
         "G": "Causticum",
-        "B": "Causticum",
-        "I": "CAUSTICUM.png"
+        "B": "Causticum"
       }
     },
     {
       "Ceanothus Americanus (Ceanothus)": {
-        "B": "Ceanothus Americanus (Ceanothus)",
-        "I": "CEANOTHUS AMERICANUS.png"
+        "B": "Ceanothus Americanus (Ceanothus)"
       }
     },
     {
@@ -1099,8 +1040,7 @@
       "Chamomilla": {
         "A": "Chamomilla",
         "G": "Chamomilla",
-        "B": "Chamomilla",
-        "I": "CHAMOMILLA.png"
+        "B": "Chamomilla"
       }
     },
     {
@@ -1112,8 +1052,7 @@
       "Chelidonium majus": {
         "A": "Chelidonium majus",
         "G": "Chelidonium majus",
-        "B": "Chelidonium Majus",
-        "I": "CHELIDONIUM MAJUS.png"
+        "B": "Chelidonium Majus"
       }
     },
     {
@@ -1139,8 +1078,7 @@
     {
       "Chininum arsenicosum": {
         "G": "Chininum arsenicosum",
-        "B": "Chininum Arsenicosum",
-        "I": "CHININUM ARSENICOSUM.png"
+        "B": "Chininum Arsenicosum"
       }
     },
     {
@@ -1204,15 +1142,13 @@
       "Cina maritima": {
         "A": "Cina maritima",
         "G": "Cina maritima",
-        "B": "Cina Maritima (Cina)",
-        "I": "CINA MARITIMA.png"
+        "B": "Cina Maritima (Cina)"
       }
     },
     {
       "Cinchona officinalis": {
         "A": "Cinchona officinalis",
-        "G": "Cinchona officinalis (china)",
-        "I": "CINCHONA OFFICINALIS.png"
+        "G": "Cinchona officinalis (china)"
       }
     },
     {
@@ -1275,8 +1211,7 @@
       "Cocculus indicus": {
         "A": "Cocculus indicus",
         "G": "Cocculus indicus",
-        "B": "Cocculus Indicus (Cocculus)",
-        "I": "COCCULUS INDICUS.png"
+        "B": "Cocculus Indicus (Cocculus)"
       }
     },
     {
@@ -1298,31 +1233,27 @@
       "Coffea cruda": {
         "A": "Coffea cruda",
         "G": "Coffea cruda",
-        "B": "Coffea Cruda",
-        "I": "COFFEA CRUDA.png"
+        "B": "Coffea Cruda"
       }
     },
     {
       "Colchicum autumnale": {
         "A": "Colchicum autumnale",
         "G": "Colchicum autumnale",
-        "B": "Colchicum Autumnale (Colchicum)",
-        "I": "COLCHICUM AUTUMNALE.png"
+        "B": "Colchicum Autumnale (Colchicum)"
       }
     },
     {
       "Collinsonia canadensis": {
         "A": "Collinsonia canadensis",
-        "B": "Collinsonia Canadensis",
-        "I": "COLLINSONIA CANADENSIS.png"
+        "B": "Collinsonia Canadensis"
       }
     },
     {
       "Colocynthis": {
         "A": "Colocynthis",
         "G": "Colocynthis",
-        "B": "Colocynthis",
-        "I": "COLOCYNTHIS.png"
+        "B": "Colocynthis"
       }
     },
     {
@@ -1334,8 +1265,7 @@
       "Conium maculatum": {
         "A": "Conium maculatum",
         "G": "Conium maculatum",
-        "B": "Conium Maculatum (Conium)",
-        "I": "CONIUM MACULATUM.png"
+        "B": "Conium Maculatum (Conium)"
       }
     },
     {
@@ -1382,8 +1312,7 @@
     {
       "Crocus sativus": {
         "A": "Crocus sativus",
-        "B": "Crocus Sativus (Crocus Satia)",
-        "I": "CROCUS SATIVUS.png"
+        "B": "Crocus Sativus (Crocus Satia)"
       }
     },
     {
@@ -1397,8 +1326,7 @@
       "Croton tiglium": {
         "A": "Croton tiglium",
         "G": "Croton tiglium",
-        "B": "Croton Tiglium",
-        "I": "CROTON TIGLIUM.png"
+        "B": "Croton Tiglium"
       }
     },
     {
@@ -1452,8 +1380,7 @@
       "Cyclamen europaeum": {
         "A": "Cyclamen europaeum",
         "G": "Cyclamen europaeum",
-        "B": "Cyclamen Europaeum (Cyclamen)",
-        "I": "CYCLAMEN EUROPAEUM.png"
+        "B": "Cyclamen Europaeum (Cyclamen)"
       }
     },
     {
@@ -1480,16 +1407,14 @@
       "Digitalis purpurea": {
         "A": "Digitalis purpurea",
         "G": "Digitalis purpurea",
-        "B": "Digitalis Purpurea (Digitalis)",
-        "I": "DIGITALIS PURPUREA.png"
+        "B": "Digitalis Purpurea (Digitalis)"
       }
     },
     {
       "Dioscorea villosa": {
         "A": "Dioscorea villosa",
         "G": "Dioscorea villosa",
-        "B": "Dioscorea Villosa",
-        "I": "DIOSCOREA VILLOSA.png"
+        "B": "Dioscorea Villosa"
       }
     },
     {
@@ -1518,8 +1443,7 @@
       "Drosera rotundifolia": {
         "A": "Drosera rotundifolia",
         "G": "Drosera rotundifolia",
-        "B": "Drosera Rotundifolia (Drosera)",
-        "I": "DROSERA ROTUNDIFOLIA.png"
+        "B": "Drosera Rotundifolia (Drosera)"
       }
     },
     {
@@ -1531,14 +1455,12 @@
       "Dulcamara": {
         "A": "Dulcamara",
         "G": "Dulcamara",
-        "B": "Dulcamara",
-        "I": "DULCAMARA.png"
+        "B": "Dulcamara"
       }
     },
     {
       "Echinacea Angustifolia (Echinacea - Rudbeckia)": {
-        "B": "Echinacea Angustifolia (Echinacea - Rudbeckia)",
-        "I": "ECHINACEA ANGUSTIFOLIA.jpg"
+        "B": "Echinacea Angustifolia (Echinacea - Rudbeckia)"
       }
     },
     {
@@ -1569,8 +1491,7 @@
     {
       "Equisetum hyemale": {
         "A": "Equisetum hyemale",
-        "B": "Equisetum Hyemale (Equisetum)",
-        "I": "EQUISETUM HYEMALE.png"
+        "B": "Equisetum Hyemale (Equisetum)"
       }
     },
     {
@@ -1649,8 +1570,7 @@
       "Euphrasia officinalis": {
         "A": "Euphrasia officinalis",
         "G": "Euphrasia officinalis",
-        "B": "Euphrasia Officinalis (Eyebright)",
-        "I": "EUPHRASIA OFFICINALIS.png"
+        "B": "Euphrasia Officinalis (Eyebright)"
       }
     },
     {
@@ -1687,15 +1607,13 @@
       "Ferrum metallicum": {
         "A": "Ferrum metallicum",
         "G": "Ferrum metallicum",
-        "B": "Ferrum Metallicum",
-        "I": "FERRUM METALLICUM.png"
+        "B": "Ferrum Metallicum"
       }
     },
     {
       "Ferrum phosphoricum": {
         "G": "Ferrum phosphoricum",
-        "B": "Ferrum Phosphoricum",
-        "I": "FERRUM PHOSPHORICUM.png"
+        "B": "Ferrum Phosphoricum"
       }
     },
     {
@@ -1789,8 +1707,7 @@
       "Gelsemium sempervirens": {
         "A": "Gelsemium sempervirens",
         "G": "Gelsemium sempervirens",
-        "B": "Gelsemium Sempervirens (Gelsemium)",
-        "I": "GELSEMIUM SEMPERVIRENS.png"
+        "B": "Gelsemium Sempervirens (Gelsemium)"
       }
     },
     {
@@ -1844,8 +1761,7 @@
       "Graphites": {
         "A": "Graphites",
         "G": "Graphites",
-        "B": "Graphites",
-        "I": "GRAPHITES.png"
+        "B": "Graphites"
       }
     },
     {
@@ -1918,8 +1834,7 @@
       "Helleborus niger": {
         "A": "Helleborus niger",
         "G": "Helleborus niger",
-        "B": "Helleborus Niger (Helleborus)",
-        "I": "HELLEBORUS NIGER.png"
+        "B": "Helleborus Niger (Helleborus)"
       }
     },
     {
@@ -1930,15 +1845,13 @@
     {
       "Helonias dioica": {
         "A": "Helonias dioica",
-        "B": "Helonias Dioica (Helonias - Chamaelirium)",
-        "I": "HELONIAS DIOICA.png"
+        "B": "Helonias Dioica (Helonias - Chamaelirium)"
       }
     },
     {
       "Hepar sulphur": {
         "A": "Hepar sulphur",
-        "B": "Hepar Sulphur (Hepar Sulphuris Calcareum)",
-        "I": "HEPAR SULPHUR.png"
+        "B": "Hepar Sulphur (Hepar Sulphuris Calcareum)"
       }
     },
     {
@@ -1990,8 +1903,7 @@
       "Hydrastis canadensis": {
         "A": "Hydrastis canadensis",
         "G": "Hydrastis canadensis",
-        "B": "Hydrastis Canadensis (Hydrastis)",
-        "I": "HYDRASTIS CANADENSIS.png"
+        "B": "Hydrastis Canadensis (Hydrastis)"
       }
     },
     {
@@ -2008,16 +1920,14 @@
       "Hyoscyamus niger": {
         "A": "Hyoscyamus niger",
         "G": "Hyoscyamus niger",
-        "B": "Hyoscyamus Niger (Hyoscyamus)",
-        "I": "HYOSCYAMUS NIGER.png"
+        "B": "Hyoscyamus Niger (Hyoscyamus)"
       }
     },
     {
       "Hypericum perforatum": {
         "A": "Hypericum perforatum",
         "G": "Hypericum perforatum",
-        "B": "Hypericum Perforatum (Hypericum)",
-        "I": "HYPERICUM PERFORATUM.png"
+        "B": "Hypericum Perforatum (Hypericum)"
       }
     },
     {
@@ -2039,8 +1949,7 @@
       "Ignatia amara": {
         "A": "Ignatia amara",
         "G": "Ignatia amara",
-        "B": "Ignatia Amara (Ignatia)",
-        "I": "IGNATIA AMARA.png"
+        "B": "Ignatia Amara (Ignatia)"
       }
     },
     {
@@ -2077,8 +1986,7 @@
       "Iodium": {
         "A": "Iodium",
         "G": "Iodium",
-        "B": "Iodium (Iodum)",
-        "I": "IODIUM.png"
+        "B": "Iodium (Iodum)"
       }
     },
     {
@@ -2090,8 +1998,7 @@
       "Ipecacuanha": {
         "A": "Ipecacuanha",
         "G": "Ipecacuanha",
-        "B": "Ipecacuanha (Ipeca)",
-        "I": "IPECACUANHA.png"
+        "B": "Ipecacuanha (Ipeca)"
       }
     },
     {
@@ -2163,23 +2070,20 @@
       "Kalium bichromicum": {
         "A": "Kalium bichromicum",
         "G": "Kalium bichromicum",
-        "B": "Kalium Bichromicum (Kali Bichromicum)",
-        "I": "KALIUM BICHROMICUM.png"
+        "B": "Kalium Bichromicum (Kali Bichromicum)"
       }
     },
     {
       "Kalium bromatum": {
         "A": "Kalium bromatum",
-        "B": "Kalium Bromatum (Kali Bromatum)",
-        "I": "KALIUM BROMATUM.png"
+        "B": "Kalium Bromatum (Kali Bromatum)"
       }
     },
     {
       "Kalium carbonicum": {
         "A": "Kalium carbonicum",
         "G": "Kalium carbonicum",
-        "B": "Kalium Carbonicum (Kali Carbonicum)",
-        "I": "KALIUM CARBONICUM.png"
+        "B": "Kalium Carbonicum (Kali Carbonicum)"
       }
     },
     {
@@ -2200,8 +2104,7 @@
     {
       "Kalium muriaticum": {
         "G": "Kalium muriaticum",
-        "B": "Kalium Muriaticum (Kali Muriaticum)",
-        "I": "KALIUM MURIATICUM.png"
+        "B": "Kalium Muriaticum (Kali Muriaticum)"
       }
     },
     {
@@ -2217,8 +2120,7 @@
     {
       "Kalium phosphoricum": {
         "G": "Kalium phosphoricum",
-        "B": "Kalium Phosphoricum (Kali Phosphoricum)",
-        "I": "KALIUM PHOSPHORICUM.png"
+        "B": "Kalium Phosphoricum (Kali Phosphoricum)"
       }
     },
     {
@@ -2229,8 +2131,7 @@
     {
       "Kalium sulphuricum": {
         "G": "Kalium sulphuricum",
-        "B": "Kalium Sulphuricum (Kali Sulphuricum)",
-        "I": "KALIUM SULPHURICUM.png"
+        "B": "Kalium Sulphuricum (Kali Sulphuricum)"
       }
     },
     {
@@ -2340,8 +2241,7 @@
       "Ledum palustre": {
         "A": "Ledum palustre",
         "G": "Ledum palustre",
-        "B": "Ledum Palustre (Ledum)",
-        "I": "LEDUM PALUSTRE.png"
+        "B": "Ledum Palustre (Ledum)"
       }
     },
     {
@@ -2368,8 +2268,7 @@
       "Lilium tigrinum": {
         "A": "Lilium tigrinum",
         "G": "Lilium tigrinum",
-        "B": "Lilium Tigrinum",
-        "I": "LILIUM TIGRINUM.png"
+        "B": "Lilium Tigrinum"
       }
     },
     {
@@ -2429,8 +2328,7 @@
       "Lycopodium clavatum": {
         "A": "Lycopodium clavatum",
         "G": "Lycopodium clavatum",
-        "B": "Lycopodium Clavatum (Lycopodium)",
-        "I": "LYCOPODIUM CLAVATUM.png"
+        "B": "Lycopodium Clavatum (Lycopodium)"
       }
     },
     {
@@ -2479,8 +2377,7 @@
     {
       "Magnesium phosphoricum": {
         "A": "Magnesium phosphoricum",
-        "B": "Magnesium Phosphoricum (Magnesia Phosphorica)",
-        "I": "MAGNESIUM PHOSPHORICUM.png"
+        "B": "Magnesium Phosphoricum (Magnesia Phosphorica)"
       }
     },
     {
@@ -2685,16 +2582,14 @@
       "Murex purpurea": {
         "A": "Murex purpurea",
         "G": "Murex purpurea",
-        "B": "Murex Purpurea (Murex)",
-        "I": "MUREX PURPUREA.png"
+        "B": "Murex Purpurea (Murex)"
       }
     },
     {
       "Muriaticum acidum": {
         "A": "Muriaticum acidum",
         "G": "Muriaticum acidum",
-        "B": "Muriaticum Acidum",
-        "I": "MURIATICUM ACIDUM.png"
+        "B": "Muriaticum Acidum"
       }
     },
     {
@@ -2748,8 +2643,7 @@
       "Natrium carbonicum": {
         "A": "Natrium carbonicum",
         "G": "Natrium carbonicum",
-        "B": "Natrium Carbonicum (Natrum Carbonicum)",
-        "I": "NATRIUM CARBONICUM.png"
+        "B": "Natrium Carbonicum (Natrum Carbonicum)"
       }
     },
     {
@@ -2761,8 +2655,7 @@
       "Natrium muriaticum": {
         "A": "Natrium muriaticum",
         "G": "Natrium muriaticum",
-        "B": "Natrium Muriaticum (Natrum Muriaticum)",
-        "I": "NATRIUM MURIATICUM.png"
+        "B": "Natrium Muriaticum (Natrum Muriaticum)"
       }
     },
     {
@@ -2773,8 +2666,7 @@
     {
       "Natrium phosphoricum": {
         "G": "Natrium phosphoricum",
-        "B": "Natrium Phosphoricum",
-        "I": "NATRIUM PHOSPHORICUM.png"
+        "B": "Natrium Phosphoricum"
       }
     },
     {
@@ -2786,8 +2678,7 @@
       "Natrium sulphuricum": {
         "A": "Natrium sulphuricum",
         "G": "Natrium sulphuricum",
-        "B": "Natrium Sulphuricum (Natrum Sulphuricum)",
-        "I": "NATRIUM SULPHURICUM.png"
+        "B": "Natrium Sulphuricum (Natrum Sulphuricum)"
       }
     },
     {
@@ -2809,8 +2700,7 @@
       "Nitricum acidum": {
         "A": "Nitricum acidum",
         "G": "Nitricum acidum",
-        "B": "Nitricum Acidum",
-        "I": "NITRICUM ACIDUM.png"
+        "B": "Nitricum Acidum"
       }
     },
     {
@@ -2827,16 +2717,14 @@
       "Nux moschata": {
         "A": "Nux moschata",
         "G": "Nux moschata",
-        "B": "Nux Moschata",
-        "I": "NUX MOSCHATA.png"
+        "B": "Nux Moschata"
       }
     },
     {
       "Nux vomica": {
         "A": "Nux vomica",
         "G": "Nux vomica",
-        "B": "Nux Vomica",
-        "I": "NUX VOMICA.png"
+        "B": "Nux Vomica"
       }
     },
     {
@@ -2893,8 +2781,7 @@
       "Opium": {
         "A": "Opium",
         "G": "Opium",
-        "B": "Opium (Papaver Somniferum)",
-        "I": "OPIUM.png"
+        "B": "Opium (Papaver Somniferum)"
       }
     },
     {
@@ -3002,8 +2889,7 @@
       "Petroleum": {
         "A": "Petroleum",
         "G": "Petroleum",
-        "B": "Petroleum",
-        "I": "PETROLEUM.png"
+        "B": "Petroleum"
       }
     },
     {
@@ -3030,16 +2916,14 @@
       "Phosphoricum acidum": {
         "A": "Phosphoricum acidum",
         "G": "Phosphoricum acidum",
-        "B": "Phosphoricum Acidum",
-        "I": "PHOSPHORICUM ACIDUM.png"
+        "B": "Phosphoricum Acidum"
       }
     },
     {
       "Phosphorus": {
         "A": "Phosphorus",
         "G": "Phosphorus",
-        "B": "Phosphorus",
-        "I": "PHOSPHORUS.png"
+        "B": "Phosphorus"
       }
     },
     {
@@ -3067,8 +2951,7 @@
     {
       "Picricum acidum": {
         "A": "Picricum acidum",
-        "B": "Picricum Acidum",
-        "I": "PICRICUM ACIDUM.png"
+        "B": "Picricum Acidum"
       }
     },
     {
@@ -3110,8 +2993,7 @@
       "Platinum metallicum": {
         "A": "Platinum metallicum",
         "G": "Platinum metallicum",
-        "B": "Platinum Metallicum (Platina)",
-        "I": "PLATINUM METALLICUM.png"
+        "B": "Platinum Metallicum (Platina)"
       }
     },
     {
@@ -3129,8 +3011,7 @@
     {
       "Podophyllum peltatum": {
         "A": "Podophyllum peltatum",
-        "G": "Podophyllum peltatum",
-        "I": "PODOPHYLLUM PELTATUM.png"
+        "G": "Podophyllum peltatum"
       }
     },
     {
@@ -3193,8 +3074,7 @@
     {
       "Pulsatilla nigricans": {
         "A": "Pulsatilla nigricans",
-        "G": "Pulsatilla nigricans",
-        "I": "PULSATILLA NIGRICANS.png"
+        "G": "Pulsatilla nigricans"
       }
     },
     {
@@ -3248,15 +3128,13 @@
     },
     {
       "Raphanus Sativus (Raphanus)": {
-        "B": "Raphanus Sativus (Raphanus)",
-        "I": "RAPHANUS SATIVUS (RAPHANUS).png"
+        "B": "Raphanus Sativus (Raphanus)"
       }
     },
     {
       "Ratanhia peruviana": {
         "A": "Ratanhia peruviana",
-        "B": "Ratanhia Peruviana (Ratanhia)",
-        "I": "RATANHIA PERUVIANA.png"
+        "B": "Ratanhia Peruviana (Ratanhia)"
       }
     },
     {
@@ -3305,8 +3183,7 @@
       "Rhus toxicodendron": {
         "A": "Rhus toxicodendron",
         "G": "Rhus toxicodendron",
-        "B": "Rhus Toxicodendron",
-        "I": "RHUS TOXICODENDRON.png"
+        "B": "Rhus Toxicodendron"
       }
     },
     {
@@ -3340,8 +3217,7 @@
       "Ruta graveolens": {
         "A": "Ruta graveolens",
         "G": "Ruta graveolens",
-        "B": "Ruta Graveolens",
-        "I": "RUTA GRAVEOLENS.png"
+        "B": "Ruta Graveolens"
       }
     },
     {
@@ -3458,8 +3334,7 @@
       "Secale cornutum": {
         "A": "Secale cornutum",
         "G": "Secale cornutum",
-        "B": "Secale Cornutum (Claviceps Purpurea)",
-        "I": "SECALE CORNUTUM.png"
+        "B": "Secale Cornutum (Claviceps Purpurea)"
       }
     },
     {
@@ -3498,8 +3373,7 @@
       "Sepia officinalis": {
         "A": "Sepia officinalis",
         "G": "Sepia officinalis",
-        "B": "Sepia Officinalis (Sepia)",
-        "I": "SEPIA OFFICINALIS.png"
+        "B": "Sepia Officinalis (Sepia)"
       }
     },
     {
@@ -3511,8 +3385,7 @@
       "Silicea terra": {
         "A": "Silicea terra",
         "G": "Silicea terra",
-        "B": "Silicea Terra (Silicea)",
-        "I": "SILICEA TERRA.png"
+        "B": "Silicea Terra (Silicea)"
       }
     },
     {
@@ -3566,8 +3439,7 @@
       "Spongia tosta": {
         "A": "Spongia tosta",
         "G": "Spongia tosta",
-        "B": "Spongia Tosta",
-        "I": "SPONGIA TOSTA.png"
+        "B": "Spongia Tosta"
       }
     },
     {
@@ -3618,8 +3490,7 @@
       "Stramonium": {
         "A": "Stramonium",
         "G": "Stramonium",
-        "B": "Stramonium",
-        "I": "STRAMONIUM.png"
+        "B": "Stramonium"
       }
     },
     {
@@ -3661,8 +3532,7 @@
       "Sulphur": {
         "A": "Sulphur",
         "G": "Sulphur",
-        "B": "Sulphur",
-        "I": "SULPHUR.png"
+        "B": "Sulphur"
       }
     },
     {
@@ -3673,8 +3543,7 @@
     {
       "Sulphuricum acidum": {
         "A": "Sulphuricum acidum",
-        "B": "Sulphuricum Acidum",
-        "I": "SULPHURICUM ACIDUM.png"
+        "B": "Sulphuricum Acidum"
       }
     },
     {
@@ -3696,8 +3565,7 @@
       "Symphytum officinale": {
         "A": "Symphytum officinale",
         "G": "Symphytum officinale",
-        "B": "Symphytum Officinale (Symphytum)",
-        "I": "SYMPHYTUM OFFICINALE.png"
+        "B": "Symphytum Officinale (Symphytum)"
       }
     },
     {
@@ -3812,8 +3680,7 @@
       "Thuja occidentalis": {
         "A": "Thuja occidentalis",
         "G": "Thuja occidentalis",
-        "B": "Thuja Occidentalis",
-        "I": "THUJA OCCIDENTALIS.png"
+        "B": "Thuja Occidentalis"
       }
     },
     {
@@ -3930,8 +3797,7 @@
     {
       "Urtica urens": {
         "G": "Urtica urens",
-        "B": "Urtica Urens",
-        "I": "URTICA URENS.png"
+        "B": "Urtica Urens"
       }
     },
     {
@@ -3982,8 +3848,7 @@
       "Veratrum album": {
         "A": "Veratrum album",
         "G": "Veratrum album",
-        "B": "Veratrum Album",
-        "I": "VERATRUM ALBUM.png"
+        "B": "Veratrum Album"
       }
     },
     {
@@ -4040,8 +3905,7 @@
     },
     {
       "Wyethia Helenoides (Wyethia)": {
-        "B": "Wyethia Helenoides (Wyethia)",
-        "I": "WYETHIA HELENOIDES (WYETHIA).jpeg"
+        "B": "Wyethia Helenoides (Wyethia)"
       }
     },
     {
@@ -48040,6 +47904,5 @@
         }
       }
     ]
-  },
-  "image_count": 136
+  }
 }
