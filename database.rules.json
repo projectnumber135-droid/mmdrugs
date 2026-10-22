@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "images": {
+      ".read": true,
+      ".write": true
+    },
+    "requests": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
