@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMT MCQ Study App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .correct-highlight {
+            background-color: #dcfce7 !important;
+            /* Tailwind green-100 */
+            border-color: #22c55e !important;
+            /* Tailwind green-500 */
+            color: #166534 !important;
+            /* Tailwind green-800 */
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .reading-active {
+            box-shadow: 0 0 0 4px #3b82f6 !important;
+            /* Tailwind blue-500 ring */
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header & Controls -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4 sm:flex sm:items-center sm:justify-between flex-wrap gap-4">
+            <div>
+                <h1 class="text-2xl font-bold text-blue-700"><i class="fas fa-book-medical mr-2"></i>FMT MCQ Guide</h1>
+                <p class="text-sm text-slate-500">2nd Year BHMS - Interactive Audio Quiz (313 Questions)</p>
+            </div>
+
+            <div
+                class="flex items-center gap-3 bg-slate-100 p-2 rounded-lg border border-slate-200 flex-wrap justify-center">
+
+                <!-- Pace Slider -->
+                <div class="flex items-center gap-2 mr-2 border-r border-slate-300 pr-3">
+                    <label for="speechRate" class="text-sm font-semibold text-slate-700 whitespace-nowrap"
+                        title="Reading Pace">
+                        <i class="fas fa-tachometer-alt text-slate-500"></i> Pace:
+                    </label>
+                    <input type="range" id="speechRate" min="0.5" max="2" step="0.1" value="0.9"
+                        class="w-20 accent-blue-600 cursor-pointer">
+                    <span id="rateDisplay" class="text-xs font-mono text-slate-500 w-6">0.9x</span>
+                </div>
+
+                <label for="startSelect" class="text-sm font-semibold text-slate-700 whitespace-nowrap">Read
+                    From:</label>
+                <select id="startSelect"
+                    class="bg-white border border-slate-300 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 p-1.5 w-24">
+                    <!-- Options populated via JS -->
+                </select>
+                <button id="startReadingBtn" onclick="startSequentialReading()"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md text-sm font-medium transition flex items-center gap-1">
+                    <i class="fas fa-play"></i> Start
+                </button>
+                <button id="stopReadingBtn" onclick="stopReading()"
+                    class="hidden bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-md text-sm font-medium transition flex items-center gap-1">
+                    <i class="fas fa-stop"></i> Stop
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quiz Content -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-8 w-full">
+        <div id="quizContainer" class="space-y-6">
+            <!-- Questions rendered here by JS -->
+        </div>
+    </main>
+
+    <script>
+        // Compact Data Structure for all 313 Questions to optimize loading
+        const qData = [
+            { q: "Forensic medicine deals with", o: ["Legal aspects of medicine", "Medical aspects of law", "Investigation of Crimes", "Post mortem examination"], a: 1 },
+            { q: "The highest judicial tribunal in India is", o: ["President's court", "Rajya sabha", "Lok sabha", "Supreme court"], a: 3 },
+            { q: "For cognisable offences the police officer can arrest the offender", o: ["on a warrant from the Magistrate", "On a warrant from the Sessions Judge", "On a warrant from the High Court", "Without any warrant"], a: 3 },
+            { q: "The power of Chief judicial Magistrate is", o: ["Death sentence", "Imprisonment for life", "Imprisonment upto 3 yr", "Imprisonment upto 7 yr"], a: 3 },
+            { q: "Coroner is assisted by", o: ["Police surgeon", "Jury", "Metropolitan Magistrate", "Deputy coroner"], a: 1 },
+            { q: "A witness who testifies to the facts observed by him is", o: ["Expert Witness", "Hostile Witness", "Common witness", "Skilled witness"], a: 2 },
+            { q: "Subpoena is a kind of", o: ["Document", "Designation", "Tribunal", "Decomposition"], a: 0 },
+            { q: "Sec. 193 IPC deals with", o: ["Injury", "Perjury", "Issuing false certificate", "Professional negligence"], a: 1 },
+            { q: "During recording of dying declaration of a patient by magistrate, medical officer's presence is necessary", o: ["To see magistrate records statement properly", "To certify mental condition of patient", "To maintain confidentiality", "to act as a witness"], a: 1 },
+            { q: "Which carries more weight in court of law", o: ["Dying Declaration", "Dying deposition", "Both carry same weight", "Both carry no weight"], a: 1 },
+            { q: "Cephalic index is important to determine the", o: ["Height", "Cranial capacity", "Race", "Sex"], a: 2 },
+            { q: "The normal male skeleton weighs approximately", o: ["2.75 Kg", "4.5 Kg", "6.5 Kg", "8.0 Kg"], a: 1 },
+            { q: "The shape of obturator foramen in female is", o: ["Oval", "Triangular", "Round", "Square"], a: 1 },
+            { q: "The characteristic feature of male sternum", o: ["Body is longer and more than twice the length of the manubrium", "Breadth is less as compared to the female sternum", "Body of the sternum is twice the length of manubrium", "Body of the sternum is less than twice the length of the manubrium"], a: 0 },
+            { q: "Neck - shaft angle of femur in male is usually", o: ["105°", "115°", "125°", "135°"], a: 2 },
+            { q: "The karyotype of a chromatin", o: ["XX (46)", "XO (45)", "XXY (47)", "None of the above"], a: 1 },
+            { q: "Barr bodies can be seen in", o: ["Erythrocytes", "Eosinophils", "Basophils", "Neutrophils"], a: 3 },
+            { q: "In the buccal smear of a female the percentage of nuclei containing chromatin body ranges from", o: ["10 to 4", "10 to 20", "15 to 20", "20 to 80"], a: 3 },
+            { q: "Poroscopy is useful in", o: ["Age determination", "Sex determination", "Race determination", "Identification"], a: 3 },
+            { q: "Medicolegally scar is important as it helps in", o: ["Identification of the person", "Indicates the nature of weapon or agent that caused the injury", "Indicates the approximate time of the injury", "All of the above"], a: 3 },
+            { q: "Disturbance of consciousness with impaired orientation, blunting of critical faculty and irrelevant thought content is known as", o: ["Delusion", "Delirium", "Hallucination", "Illusion"], a: 1 },
+            { q: "Following are the causes for delirium EXCEPT", o: ["Continuous high temperature", "Mental stress", "Dhatura Poisoning", "Schizophrenia"], a: 3 },
+            { q: "Persecutory delusions can be seen in", o: ["Imbecility", "Paranoid schizophrenia", "Neurotic illness", "Delirium tremens"], a: 1 },
+            { q: "Commonest organic hallucinations are", o: ["Auditory", "Tactile", "Pshychomotor", "Olfactory"], a: 0 },
+            { q: "Irresistible force compelling a person to the conscious performance of some action without motive or forethought is called", o: ["Impulse", "Obsession", "Illusion", "Delirium"], a: 0 },
+            { q: "Kleptomania is an irresistible impulse to", o: ["Drink alcohol", "Take a drug of addiction repeatedly", "Steal articles of little value", "Mutilate animals"], a: 2 },
+            { q: "Emotional or intellectual disorders without loss of touch with reality is seen in", o: ["Psychosis", "Neurosis", "Neurasthenia", "Delirium"], a: 1 },
+            { q: "Alternating states of depression, excitement and stupor are features of", o: ["Paranoid schizophrenia", "Catatonia", "Hebephrenia", "Simple schizophrenia"], a: 1 },
+            { q: "Somnabulism is", o: ["A state of dissociated consciousness", "A condition of non-insane automatism", "Sleep like condiion brought on by artificial means", "A condition midway between sleep and waking"], a: 0 },
+            { q: "Mental health Act has been passed in", o: ["1978", "1981", "1985", "1987"], a: 3 },
+            { q: "A brush burn is", o: ["An extensive burn", "Burn produced by electricity", "Sliding abrasion", "Pressure abrasion"], a: 2 },
+            { q: "In abrasion, scab becomes reddish brown in", o: ["12-24 hrs", "24-48 hrs", "48-72 hrs", "4-5 days"], a: 2 },
+            { q: "The size of a contusion is usually", o: ["Equal to the surface of the agent", "Slightly larger than the surface of the agent", "Slightly smaller than the surface of the agent", "Has no relationship to the syrface of the agent"], a: 1 },
+            { q: "Greenish color of contusion is due to", o: ["Haemosiderin", "Haemotoidin", "Bilirubin", "Biliverdin"], a: 1 },
+            { q: "The color of the subconjunctival haemorrhages changes from red to", o: ["Blue", "Brown", "Green", "Yellow"], a: 3 },
+            { q: "Chop wounds are injuries caused by", o: ["Blunt pointed weapon", "Light sharp edged weapon", "Heavy sharp edged weapon", "Broken pieces of glass"], a: 2 },
+            { q: "In cut throat injuries, when jugulars are cut, death is due to", o: ["Bleeding", "pain", "Air embolism", "Nurogenic shock"], a: 2 },
+            { q: "The depth of a stab wound is", o: ["Equal to length of the blade", "Less than the length of the blade", "Greater than the length of the blade", "No relation of the length of the blade"], a: 3 },
+            { q: "The direction of a stab wound indicates", o: ["Type of the weapon", "Force of penetration", "Relative positions of the assailant and the victim", "Stretching of the tissue"], a: 2 },
+            { q: "Stretch lacerations are caused due to", o: ["Running over by a motor vehicle", "Traction or shear strains", "Pieces of glass", "Crushing of the skin between two hard objects"], a: 0 },
+            { q: "Bore of a weapon indicates", o: ["Range of weapon", "Diameter of barrel", "Size of lead shot", "Length of barrel"], a: 1 },
+            { q: "The 'Rule of nine' is used in burns for estimation of", o: ["Fluid required", "Surface area affected", "Degree of shock", "All of the above"], a: 1 },
+            { q: "According to 'Rule of Nine' the area of skin of head and neck is", o: ["9%", "18%", "27%", "None of the above"], a: 0 },
+            { q: "For purpose of cremation a human body has to be incinerated at 9000 C to 10000 C for", o: ["1/2 hr", "1 hr", "1 1/2 hrs", "3 hrs"], a: 2 },
+            { q: "The important character of \"heat haematoma\" is", o: ["Soft, friable clot of light chocolate color", "Firmly adherent to the dura matter", "Frontal region is the most common site", "It is usually bilateral"], a: 0 },
+            { q: "Scalds are caused by", o: ["Flame or ultraviolet light", "cooling a burnt area rapidly", "Steam", "Burns due to yellow phosphorous"], a: 2 },
+            { q: "In electrocution, death may occur due to", o: ["Primary shock", "Secondary shock", "Paralysis of respiratory centre", "Coma"], a: 2 },
+            { q: "Low voltage current causes death by", o: ["Respiratory failure", "Ventricular fibrillation", "Clotting of blood", "Damage to spinal cord"], a: 1 },
+            { q: "Lightening is", o: ["Direct electric current", "Indirect current", "Alternating current", "None of above"], a: 0 },
+            { q: "The object of conducting a medico legal autopsy is to", o: ["Find out the cause of death", "Find out the time since death", "Find out the manner of death", "All of the above"], a: 3 },
+            { q: "For exposing the skull, the ususal scalp incision is", o: ["A horizontal circular incision passing one cm above the nasion to the occipital protruberance", "An incision starting from the region of the mastoid process just behind one ear carried over the vertex of the scalp to the back of the opposite ear", "An incision starting from the front of one ear carried over the vertex of the scalp to the front of the opposite ear", "An incision starting from the nasion and passing back over the vertex of the scalp in a sagittal plane to the occipital protruberance"], a: 1 },
+            { q: "Examination of stomach is done by", o: ["Cutting along greater curvature", "Cutting along lesser curvature", "Cutting vertically", "Cutting horizontally"], a: 1 },
+            { q: "For histopathological examination tissues are preserved in", o: ["10% formalin", "Absolute alcohol", "Saturated solution of sodium chloride", "Glycerine"], a: 2 },
+            { q: "Pieces of human bones can be distinguished from the animal bones by", o: ["Precipitin test", "X-ray examination", "Spectroscopic examination", "Neutron activation analysis"], a: 0 },
+            { q: "The length of an adult femur is approx. equal to what percentage of the stature of an individual?", o: ["23%", "25%", "27%", "29%"], a: 2 },
+            { q: "Exhumation can be ordered by", o: ["Inspector of Police", "Supritendent of Police", "Magistrate", "District Medical Officer"], a: 2 },
+            { q: "From burnt bones", o: ["Arsenic can be detected", "Arsenic cannot be detected", "Opium can be detected", "Iodine can be detected"], a: 0 },
+            { q: "At autopsy, a massive fat embolism can be confirmed by", o: ["Examination of lungs under water", "Examination of heart under water", "Frozen section of tissue and demonstration of fat by usual stains", "None"], a: 2 },
+            { q: "Suspended animation may be seen in", o: ["Elecrocution", "Strangulation", "Still born", "Iodine poisoning"], a: 0 },
+            { q: "The test for circulation is", o: ["Magnus test", "ECG test", "Icards test", "All of above"], a: 1 },
+            { q: "Modes of death are", o: ["Somatic and molecular", "Early, immediate and late", "Coma, Syncope and asphyxia", "Suicidal, homicidal and accidental"], a: 2 },
+            { q: "A per Gordon, the modes of death are", o: ["Coma, Syncope and asphyxia", "Suicidal, homicidal and accidental", "Early, immediate and late", "Anoxic anoxia, anaemic anoxia, stagnant anoxia & histotoxic anoxia"], a: 3 },
+            { q: "Commonest cause of sudden death is", o: ["Acute myocarditis", "Pulmonary embolism", "Myocardial infarction", "Congestive cardiac failure"], a: 2 },
+            { q: "The ideal place to record the temperature in a dead body is", o: ["Mouth", "Axilla", "Rectum", "Heart"], a: 2 },
+            { q: "Post-mortem caloricity is seen in poisoning from", o: ["Cyanides", "Strychnine", "Arsenic", "Opium"], a: 1 },
+            { q: "Rigor mortis first appears in", o: ["Eye lids", "Heart", "Intestine", "Front of the neck"], a: 1 },
+            { q: "In India, During summer rigor mortis usually lasts for", o: ["12-18 hrs", "18-36 hrs", "24-48 hrs", "48-72 hrs"], a: 0 },
+            { q: "The onset of cadaveric spasm is", o: ["Immediately after death", "6 hrs after death", "12 hrs after death", "24 hrs after death"], a: 0 },
+            { q: "Cyanosis occurs when the concentration of reduced haemoglobin exceeds", o: ["2 gms%", "4 gms %", "5 gms%", "6 gms %"], a: 2 },
+            { q: "Petechial haemorrhages in asphyxia are also known as", o: ["Traches noires", "Tardieu spots", "Tell- tale haemmorrhages", "All of above"], a: 1 },
+            { q: "When a person is hanging with feet touching ground it is", o: ["Complete hanging", "Partial hanging", "Suicidal hanging", "Accidental hanging"], a: 1 },
+            { q: "The commonest cause of death in hanging is", o: ["Asphyxia", "Cerebral venous congestion", "Asphyxia and cerebral venous congestion combined", "Cerebral anaemia"], a: 2 },
+            { q: "A ligature mark on the neck directed obliquely upwards on both sides is seen in hanging with a", o: ["Fixed loop with a single knot in midline at the back of the head", "Running nose", "Fixed loop with a knot in the region of one ear", "Low point of suspension"], a: 0 },
+            { q: "Lynching is", o: ["Suicidal hanging", "Homicidal hanging", "Accidental hanging", "Point blank shooting"], a: 1 },
+            { q: "Strangulation is caused by", o: ["Garrotting", "Mugging", "Bansdola", "All of above"], a: 1 },
+            { q: "Death by compressing neck manually is known as", o: ["Throttling", "Mugging", "Garrotting", "Smothering"], a: 0 },
+            { q: "In fresh water drowning a person dies within", o: ["4-5 mins", "5-6 mins", "8-10 mins", "15-20 mins"], a: 0 },
+            { q: "In dry drowning death is due to", o: ["Laryngeal spasm", "Asphyxia", "Ventricular fibrillation", "Vagal inhibition"], a: 0 },
+            { q: "The most characteristic external sign of drowning is", o: ["Cutis anserina", "Washerwoman's hands & feet", "Fine, white, lathery froth at the mouth and nostrils", "Distended abdomen"], a: 2 },
+            { q: "In starvation, if both water and food are not taken death results in", o: ["10-12 days", "2-4 weeks", "4-6 weeks", "6-8 weeks"], a: 0 },
+            { q: "In starvation, gall bladder is", o: ["Distended", "Atrophied", "Shrunken", "Normal"], a: 0 },
+            { q: "Starvation for few days causes severe effects in", o: ["Very young and aged", "Middle aged", "Adolescent", "Young females"], a: 0 },
+            { q: "Localised effect of cold is", o: ["Foot drop", "Claw hand", "Frost bite", "All of above"], a: 2 },
+            { q: "Frost bite is due to", o: ["Biting by the frost", "Heavy snow fall", "Exposure to extreme cold", "Cold water bath"], a: 2 },
+            { q: "Frost bite occurs at", o: ["-10°C", "-2.5°C", "+4°C", "+10°C"], a: 1 },
+            { q: "Frost bite frequently affects the", o: ["Nose and ears", "Scalp", "Lips", "Tongue"], a: 0 },
+            { q: "Heat hyperpyrexia may be precipitated by", o: ["Increased humidity", "Decreased humidity", "Hypertension", "Hyperthyroidism"], a: 0 },
+            { q: "Brown atrophy of the heart is seen in", o: ["Starvation", "Burns", "Poisoning", "Hanging"], a: 0 },
+            { q: "What is medicolegal significance of heart stroke", o: ["An occupational hazard", "Property dispute", "Compensation", "Nil"], a: 3 },
+            { q: "Impotence means", o: ["Physically not fit for sexual act", "One who is not capable of doing sexual act", "One who cannot procreate a child", "None of above"], a: 1 },
+            { q: "Sterility in the female refers to", o: ["Inability to conceive children", "Inability to deliver children", "Inability to ovulate", "Inability to have sexual intercourse"], a: 0 },
+            { q: "In hypospadias urethral opening is situated on", o: ["Under surface of penis", "Anterior part of glans", "Dorsum of penis", "Under the scrotum"], a: 0 },
+            { q: "Male sterility may be seen in", o: ["Alcohol poisoning", "Tuberculosis of epididymis", "Mercury poisoning", "Hypospadiasis"], a: 3 },
+            { q: "Sterility may occur in women as a result of occupational exposure to", o: ["Mercury", "Lead", "Carbon monoxide", "Agricultural insecticides"], a: 1 },
+            { q: "Sterility in the female may occur due to", o: ["Lithotomy operation", "Pulmonary tuberculosis", "Vaginal injury", "Conical cervix"], a: 3 },
+            { q: "The word 'Quoad' refers to", o: ["An impotent individual", "An individual who is impotent with one particular woman", "An individual who is impotent with prostitute", "An individual who is sterile"], a: 1 },
+            { q: "After vasectomy a male person can be declared to be sterile", o: ["Immediately after operation", "After one week", "After one month", "Absence of sperm in semen on two successive occasions"], a: 3 },
+            { q: "Tears of the hymen caused by sexual intercourse are", o: ["Usually symmetrical", "Usually situated anteriorly at one or both sides", "Usually extend to the vaginal wall", "Usually not covered with mucus membrane"], a: 3 },
+            { q: "Most probable sign of varginity is", o: ["Firm, small, hemispherical, elastic breasts", "Thick, firm, elastic labia majora", "Intact hymen", "Soft, small, pink labia minora"], a: 1 },
+            { q: "Presumptive sign of pregnancy is", o: ["Amenorrhoea", "Enlargement of abdomen", "Enlargement of breast", "Hegar's sign"], a: 0 },
+            { q: "Hegar's sign can be elicited at about", o: ["6th week", "10th week", "12th week", "16th week"], a: 0 },
+            { q: "Ballottment is positive during", o: ["3-4th month", "6-7th month", "4-5th month", "7-8th month"], a: 1 },
+            { q: "The presence of pregnancy can be diagnosed before 12 weeks by", o: ["X-ray", "Bimanual pelvic examination", "Laproscopy", "Ultrasonography"], a: 3 },
+            { q: "Superfoetation refers to", o: ["Fertilisation of two ova of the same menstrual cycle by two separate acts of coitus", "Abortion of one foetus in a twin pregnancy", "Fertilisation of a second ovum in a woman who is already pregnant", "Death and retension of one foetus in a twin pregnancy"], a: 2 },
+            { q: "Lochia is discharge from", o: ["Vagina", "Nose", "Breast", "Ears"], a: 0 },
+            { q: "The sigh of remote delivery in the dead is that", o: ["The length of the body of the uterus and cervix are almost equal", "The body of the uterus is twice the length of the cervix", "The uterine walls are convex from inside", "The external os is well defined"], a: 1 },
+            { q: "Artificial insemination at present is done by introduction of", o: ["Semen into genital tract of female", "Motile sperms into genital tract of female", "Sperms", "Penis"], a: 0 },
+            { q: "If the child resembles his grand parents it is called as", o: ["Atavism", "Legitimate child", "Illegitimate child", "Suppositious child"], a: 0 },
+            { q: "Definition of rape is covered under section", o: ["375 of IPC", "376 of IPC", "377 of IPC", "366 of IPC"], a: 0 },
+            { q: "Sexual intercourse by a man with his own wife is not rape, if she is above", o: ["12 yrs", "15 yrs", "14 yrs", "16 yrs"], a: 2 },
+            { q: "When two bodies come in contact, there is always transfer of material from one to another, this is", o: ["Locard's principle of exchange", "Metallic fouling", "Corpus delicti", "Rule of haase"], a: 0 },
+            { q: "Gonococci are", o: ["Gram negative cocci in chains", "Gram negative diplococci", "Gram positive diplococci", "Gram positive cocci in bunches"], a: 1 },
+            { q: "Sudden death of a victim of rape may be caused from", o: ["Shock due to fright and emotion", "Secondary shock", "Mental derangement", "Wound infection"], a: 0 },
+            { q: "Incest refers to sexual intercourse by a man with", o: ["A woman below the age of 16 yrs", "His divorced wife", "A woman who is closely related to him by blood", "A married woman (not his wife)"], a: 2 },
+            { q: "Unnatural sexual offences come under section", o: ["375 of IPC", "376 of IPC", "377 of IPC", "498 of IPC"], a: 2 },
+            { q: "Tribadism is also called", o: ["Lesbianism", "Sexual oralism", "Buccal coitus", "Eonism"], a: 0 },
+            { q: "Bestiality is", o: ["Cruelty to animals", "Cruelty to fellow human beings", "intercourse with Beast like behaviour by animals insane Sexual", "None of above"], a: 2 },
+            { q: "In transvestism sexual pleasure is obtained by", o: ["Wearing female dress", "Manual manipulation of Oral stimulation if the female genitalia the female genitalia", "Manual stimulation of the male genitalia", "None"], a: 0 },
+            { q: "Incidence of abortion is about", o: ["2 to 5%", "5 to 10%", "10 to 15%", "20 to 30%"], a: 2 },
+            { q: "Abortion done in good faith to save the life of the woman is known as", o: ["Natural abortion", "Injustifiable abortion", "Justifiable abortion", "Criminal abortion"], a: 2 },
+            { q: "MTP act was introduced in", o: ["1961", "1671", "1974", "1975"], a: 1 },
+            { q: "Quinine and ergot cause abortion by acting as", o: ["Vaginal irritation Uterine contractions", "Ecbolics Emmenagogues and infection Detachment of parts of of the uterine wall placenta Necrosis", "General poisons Stimulation of uterine nerves", "None"], a: 1 },
+            { q: "Abortion stick introduced into the vagina or cervix causes abortion due to", o: ["Vaginal irritation", "Uterine contractions", "Necrosis", "General poisons"], a: 0 },
+            { q: "Medical termination of pregnancy in the first trimester is best performed by", o: ["Dilatation and curettage", "Prostaglandin injection", "Vaccum aspiration", "Low rupture of the membranes"], a: 2 },
+            { q: "Three month foetus is about", o: ["6 cm long", "15 cm long", "9 cm long", "18 cm long"], a: 1 },
+            { q: "In six months foetus, the testicles are situated", o: ["Close to kidney", "In inguinal region", "In external inguinal ring", "In scrotum"], a: 0 },
+            { q: "Infanticide means, the unlawful destruction of child under the age of", o: ["One week", "One month", "One year", "three yrs"], a: 2 },
+            { q: "In a newborn, an unrespired lung shows", o: ["Rounded margins", "Soft spongy consistency", "Uniform reddish- brown or deep violet color", "Exudation of frothy blood on section"], a: 2 },
+            { q: "Disciplinary control on medical profession is maintained by", o: ["State Government", "Central Government", "Indian medical council", "State medical council"], a: 3 },
+            { q: "Moral principles and guidelines which govern decision making in medicine is known as", o: ["Medical etiquette", "Medical law", "Medical Ethics", "Medical Jurisprudence"], a: 2 },
+            { q: "Conventional laws of courtesy observed between members of medical profession is known as", o: ["Medical law", "Medical etiquette", "Medical Ethics", "Medical Jurisprudence"], a: 1 },
+            { q: "Medical jurisprudence deals with", o: ["Legal aspect of Medicine", "Medical aspect of law", "Effects of violence on body", "Laws as per IPC"], a: 0 },
+            { q: "Dichotomy means", o: ["Fee splitting", "Employing agents to procure patients", "Covering", "Receiving commission from drug firms"], a: 0 },
+            { q: "Professional negligence is failure on the part of the doctor", o: ["For wrong diagnosis", "For wrong treatment", "For absence of reasonable care and", "All of the above"], a: 2 },
+            { q: "Cases of criminal professional negligence are usually tried by", o: ["Chief judicial magistrate", "First class judicial magistrate", "Second class judicial magistrate", "Sessions judge"], a: 1 },
+            { q: "Contributary negligence is the negligence of", o: ["Doctor", "Patient", "Doctor and patient", "Nursing staff"], a: 2 },
+            { q: "Products liability refers to", o: ["Liability of doctor", "Liability of patient", "Liability of manufacture", "Liability of hospital"], a: 2 },
+            { q: "Informed consent is understanding by the patient of", o: ["Nature of his disease and of proposed procedure", "Alternatives to such procedure", "Risks involved in the procedure", "All of the above"], a: 3 },
+            { q: "Consumer protection Act was passed in", o: ["1986", "1988", "1992", "1995"], a: 0 },
+            { q: "In professional negligence there is", o: ["Violation of code of medical ethics", "Damage to person need not be present", "Trial is by state medical council", "Punishment can be fine or imprisonment"], a: 3 },
+            { q: "The drug and cosmetics Act, 1940", o: ["Provides for the maximum quantity of drugs...", "Controls the quality, purity and strength of drugs", "Bans advertisements which offend decency or morality", "Gives the power to fix the maximum price of any drug"], a: 1 },
+            { q: "Under the 'Drugs and Cosmetics Rules 1945', vaccines and sera are included Under", o: ["Schedule C", "Schedule E", "Schedule F", "Schedule H"], a: 2 },
+            { q: "Schedule L of the drugs and cosmetics rule 1945, consists of", o: ["Vaccines and Sera", "Hormone preparation", "Antibiotics and chemo therapeutic agents", "List of poisons"], a: 2 },
+            { q: "The drugs control Act, 1950", o: ["Controls the quality...", "Bans advertisements...", "Makes provisions for...", "It gives the power to fix the maximun price..."], a: 3 },
+            { q: "Narcotic drugs and Psychotropic substances act was passed in the year", o: ["1981", "1983", "1985", "1986"], a: 2 },
+            { q: "Which is a peripheral poison", o: ["Aconite", "Conium", "Oleander", "Coal gas"], a: 1 },
+            { q: "Which is somniferous poison", o: ["Dhatura", "Cannabis", "Belladona", "Opium"], a: 3 },
+            { q: "Absolute contraindication for gastric lavage is poisoning by", o: ["Corrosive poisons", "Convulsant poisons", "Volatile poisons", "Comatose patients"], a: 0 },
+            { q: "BAL is contraindicated in", o: ["Gastritis", "Dehydration", "Liver damage", "Kidney damage"], a: 2 },
+            { q: "Near ideal suicidal poison is", o: ["Cyanide", "Organophosphorous", "Barbiturates", "Alcohol"], a: 2 },
+            { q: "Fatal period from poisoning by sulphuric acid is usually around", o: ["2 to 3 hrs", "6 to 12 hrs", "18 to 24 hrs", "1 to 2 days"], a: 2 },
+            { q: "Sulphuric acid in pure form is", o: ["Hygroscopic oily liquid", "Colorless fuming liquid", "Gas soluble in water", "Non hygroscopic non fuming liquid"], a: 0 },
+            { q: "Xanthoproteic reaction is seen in poisoning by", o: ["Sulphuric acid", "Nitric acid", "Carbolic acid", "Oxalic acid"], a: 1 },
+            { q: "In Nitric acid poisoning, yellow discoloration is seen in", o: ["Crowns of the teeth", "Larynx", "Tongue", "Duodenum"], a: 0 },
+            { q: "In Oxalic acid poisoning, stomach wash is done with", o: ["Potassium Permanganate", "Copper sulphate", "Starch solution", "Lime water"], a: 3 },
+            { q: "Pure carbolic acid is a", o: ["Clear, colorless, fuming liquid", "Colourless, prismatic needle like crystals", "Dark brown liquid", "Colorless non fuming liquid"], a: 1 },
+            { q: "Stomach appearance in carbolic acid poisoning is", o: ["Black", "Soft and friable", "Leather bottle", "Yellowish and thin"], a: 2 },
+            { q: "Hydrocyanic acid poisoning affects", o: ["Protoplasm", "Blood", "Enzymes", "Brain"], a: 0 },
+            { q: "The breath smells of bitter almonds in poisoning by", o: ["Arsenic", "Cyanides", "Dhatura", "Chloral hydrate"], a: 1 },
+            { q: "In cyanide poisoning amyl nitrite is usually administered by", o: ["Oral route", "Inhalation", "Subcutaneous injection", "Intravenous injection"], a: 1 },
+            { q: "Appearance of white phosphorous is", o: ["Whitw and opaque solid mass", "Translucent waxy, cylinders", "Silvery white", "Shining white crystals"], a: 1 },
+            { q: "White phosphorous ia always preserved under", o: ["Water", "Alcohol", "Lerosene", "Sand"], a: 0 },
+            { q: "Diwali poisoning is due to", o: ["Arsenic", "Lead", "Mercury", "Copper"], a: 2 },
+            { q: "Arsenic interferes with cell metabolism by combining with", o: ["Cytochrome oxidase", "Sulphydryl enzymes", "Acetylcholineesterase", "Lecithinase"], a: 1 },
+            { q: "Punctate basophilia is charecteristic of poisoning by", o: ["Mercury", "Lead", "Arsenic", "Copper"], a: 1 },
+            { q: "Wrist drop can occur in", o: ["Chronic lead poisoning", "Opium poisoning", "Arsenic poisoning", "Copper poisoning"], a: 0 },
+            { q: "Corrosive sublimate is the other name for", o: ["Mercuric chloride", "Mercuric oxide", "Mercuric iodide", "Emrcurous chloride"], a: 0 },
+            { q: "Erethism is seen in which poisoning", o: ["Mercury", "Arsenic", "Aconite", "Phenol"], a: 0 },
+            { q: "Presence of two punctured marks is suggestive of", o: ["Poisonous snake bite", "Non poisonous snake bite", "Scorpion bite", "Bee sting injury"], a: 0 },
+            { q: "The specific treatment of snake bite poisoningis by", o: ["Administration of polyvalent anti snake venom", "Administration of antivenin", "Antihistaminics and cortisone", "Renal dialysis"], a: 0 },
+            { q: "Opium is obtained by incising the", o: ["Unripe capsule of papaver somniferum", "ripe seeds", "Poppy seeds", "Flowers of papaver somniferum"], a: 0 },
+            { q: "An irresistible desire for alcoholic drinks at regular intervals is known as", o: ["Mutilomania", "Kleptomanis", "Dipsomania", "Pyromania"], a: 2 },
+            { q: "The best antidote for methyl alcohol poisoning is", o: ["Alkaline diuretics", "Ethyl alcohol", "citrated calcium carbimide", "I.V. Fructose"], a: 1 },
+            { q: "Automatism is typically seen in", o: ["Alcohol", "Opium", "Strychnine", "Barbiturates"], a: 3 },
+            { q: "Muscarine like effect of acetylcholine includes", o: ["Tremors", "Ataxia", "Twitching of muscles", "Excessive salivation"], a: 3 },
+            { q: "The following is used for stomach wash in Dhatura poisonng", o: ["Potassium permanganate", "Lime water", "Glycerine", "Any one of above"], a: 0 },
+            { q: "The convulsions in strychnine poisoning are due to", o: ["Anticholinesterase activity", "Depession of the inhibitory post synaptic potentials in the spinal cord", "Medullary stimulation", "Sensitisation of sensory cerebral cortex"], a: 1 },
+            { q: "The usual fatal period in strychnine poisoning is", o: ["1/2 hr", "1 to 2 hrs", "6 to 12 hrs", "12 to 24 hrs"], a: 1 },
+            { q: "Antidote used in curare poisoning", o: ["Atropine", "Bemegride", "Neostigmine", "BAL"], a: 2 },
+            { q: "Conine affects the", o: ["Cerebellum", "Basal ganglion", "Motor nerve endings", "Sensory nerve endings"], a: 2 },
+            { q: "Which one of the following initially stimulates but later depresses or blocks autonomic ganglia", o: ["Digitatil", "Nicotine", "Aconite", "Cerbera thevetia"], a: 1 },
+            { q: "Amblyopia is due to chronic poisoning with", o: ["Tobacco", "Alcohol", "Cannabis", "Opium"], a: 0 },
+            { q: "The most poisonous part of aconite plant is", o: ["Leaves", "Shoots", "Flowers", "Roots"], a: 3 },
+            { q: "The poison which has a sweet taste and causes burning sensation, tingling and numbness of lips, mouth and tongue is", o: ["Cerbera thevetia", "Curare", "Aconite", "Calotropis"], a: 2 },
+            { q: "The characteristic feature of poisoning by Aconite", o: ["Tingling and numbness all over the body", "Excessive salivation", "Erythematous or urticarial rash on the skin", "Raised blood pressure"], a: 0 },
+            { q: "Hippus is seen in poisoning with", o: ["Alcohol", "Aconite", "Morphine", "Cannabis"], a: 1 },
+            { q: "The usual fatal dose of aconite root is", o: ["1 to 2 gm", "4 to 5 gm", "5 to 10 gm", "10 to 20 gm"], a: 0 },
+            { q: "The following parts of nerium odorum are poisonous", o: ["Leaves", "Fruits", "Roots", "All parts"], a: 3 },
+            { q: "The usual fatal dose of nicotine is", o: ["30 mg", "60 mg", "100 mg", "200 mg"], a: 1 },
+            { q: "The fatal dose of nerium odorum is", o: ["15 gm of root", "20 gm of root", "40 gm of root", "50 gm of root"], a: 0 },
+            { q: "Which one of the following gases acts as a chemical asphyxiant?", o: ["Carbon monoxide", "Carbon dioxide", "Chlorine", "Ammonia"], a: 0 },
+            { q: "Which one of thw following gases acts as a simple asphyxiant?", o: ["Carbon monoxide", "Carbon dioxide", "Hydrogen cyanide", "Ammonia"], a: 1 },
+            { q: "Carbon monoxide causes death due to asphyxia by", o: ["Displacing oxygen from its combination with haemoglobin", "Forming a toxic compound with blood", "Inhibiting the enzyme cytochrome oxidase", "Injuring the air passages or lungs"], a: 0 },
+            { q: "Dyspnoea, discomfort and muscular weakness appear when the carbon dioxide content of the inspired air reaches", o: ["20%", "30%", "40%", "50%"], a: 2 },
+            { q: "Chlorine and phoshene produce", o: ["Vesication", "Pulmonary edema", "Constipation", "Convulsions"], a: 1 },
+            { q: "Tear gas includes", o: ["Mustard gas", "Lewisite", "Diphosgene", "Chloracetophenone"], a: 3 },
+            { q: "The comonest organism producing food poisoning is", o: ["Salmonella", "Shigella", "Streptococci", "Proteus vuigaris"], a: 0 },
+            { q: "Lathyrism is caused by consumption of lathyrus sativus in quantities exceeding 30% of the total diet for more than", o: ["3 Months", "6 months", "1 yr", "2 yrs"], a: 1 },
+            { q: "The important characteristic of drug addiction is", o: ["Desire but no compulsion to take the drug", "Both psychological and physical dependence", "Physical dependence only", "Psychological dependence only"], a: 1 },
+            { q: "The characteristic of drug habituation is", o: ["Desire but no compulsion to take the drug", "Tendency to increase the dose", "Physical dependence", "Chatacterictic withdrawl symptoms"], a: 0 },
+            { q: "police inquest is also known as", o: ["coroners inquest", "magistrate inquest", "panchanama", "state inquest"], a: 2 },
+            { q: "In case of death in lock up, the inquest is held by -", o: ["Police officer", "coroner", "doctor", "magistate"], a: 3 },
+            { q: "In India, inquest is carried out by all except-", o: ["Police officer", "Magistrate", "Panchayat officer", "District Attorney"], a: 3 },
+            { q: "The requirements of valid consent are:", o: ["The person must be major", "There must be mentally sound", "no fraud or theat", "All of the above options are correct"], a: 3 },
+            { q: "What, in law, is a 'hostile' witness?", o: ["who perposefully change the state ment", "who don't know the truth", "who is minor", "none of the above"], a: 0 },
+            { q: "section 193 IPC deals with", o: ["perjury", "conduct money", "summons", "hostile witness"], a: 0 },
+            { q: "session court situated at", o: ["district level", "state level", "taluka level", "capital of counrty"], a: 0 },
+            { q: "what is meant by penal erasure", o: ["permanent cancellation of registration", "temporary restoretion of registration", "warning notice", "none of the above"], a: 0 },
+            { q: "all are examples of criminal neglegence except", o: ["giving wrong blood", "operation on wrong part", "dressing with corrosives", "refusal to pay fees"], a: 3 },
+            { q: "previleged communication is", o: ["communication made by doctor with patient", "communication made by patient", "communication made in social moral and legal interest", "communication made by magistrate"], a: 2 },
+            { q: "The cephalic index of Indian population is between:", o: ["70-75", "75-80", "80-85", "85-90"], a: 1 },
+            { q: "plano convex material on nuclear membrane is", o: ["barr body", "davidson body", "cromatine", "none of the above"], a: 0 },
+            { q: "mixed dentition period is between", o: ["10-17 yrs", "6-11 yrs", "9-10 yrs", "11-17 yrs"], a: 1 },
+            { q: "eruption period of 3 rd molar", o: ["17-21yrs", "12-13 yrs", "9-12 yrs", "10-15 yrs"], a: 0 },
+            { q: "in klinefelter syndrome sex chromatin pattern is", o: ["XXY", "XO", "XY", "XYY"], a: 0 },
+            { q: "scar is devoid of all from option, except", o: ["hair follicle", "sweat gland", "pigment", "fibrous tissue"], a: 3 },
+            { q: "Most common pattern finger print is", o: ["Whorls", "Loops", "Composite", "Arches"], a: 1 },
+            { q: "Dactylography introduced in India by", o: ["William Herschel", "Frances Galton", "Locard", "Bertilon"], a: 0 },
+            { q: "Tattoo marks destroyed, their presence can be inferred from presence of pigment in", o: ["Deep dermis", "Subcutaneous tissue", "Lymph nodes Regional", "blood"], a: 2 },
+            { q: "Exhumation done under order by", o: ["Police officer", "Superintendent police", "First class magistrate", "constable"], a: 2 },
+            { q: "Tardieu spots in hanging are common at all the following sites except", o: ["Scalp", "Eyebrow", "Chest wall", "Face"], a: 2 },
+            { q: "Postmortem caloricity seen in poisoning from", o: ["Arsenic", "Strychnine", "Cyanide", "Organophosphorus"], a: 1 },
+            { q: "Fixation of postmortem staining occurs in", o: ["2 hrs", "4 hrs", "6 hrs", "8 hrs"], a: 3 },
+            { q: "Cutis anserina of rigor mortis due to stiffness of", o: ["Erector pilorum", "Biceps", "Cremaster", "Diaphragm"], a: 0 },
+            { q: "Rigor mortis does not occur in fetus less than", o: ["9 mth", "7 mth", "6 mth", "8 mth"], a: 1 },
+            { q: "Chief agent for bacterial putrefaction is", o: ["E.coli", "B. fragilis", "C.welchii", "Staph aureus"], a: 2 },
+            { q: "First external sign of putrefaction of body lying in air is around", o: ["Umbilicus", "Rt iliac fossa", "Lt iliac fossa", "Chest wall"], a: 1 },
+            { q: "Last organ to putrefy", o: ["Uterus/prostate", "Testes", "Ovary", "Adrenals"], a: 0 },
+            { q: "Maggots appear in natural orifices of dead in summer in about", o: ["2-4 hrs", "6-8 hrs", "8-12 hrs", "12-24 hrs"], a: 3 },
+            { q: "Greenish colour earliest sign of putrefaction due to", o: ["Meta Hb", "Нь", "SulphmetHb", "CarboxyHb"], a: 2 },
+            { q: "Brush burn refers to", o: ["electric burn", "Lightening burn", "Sliding abrasion", "pressure abrasion"], a: 2 },
+            { q: "Blunt trauma more likely to produce incised like wounds", o: ["hand", "neck", "scalp", "chest"], a: 2 },
+            { q: "In Contrecoup impact lesion is present", o: ["At site of impact", "At a site opposite to impact", "At a site tangential to impact", "None of the above"], a: 1 },
+            { q: "Whiplash is which form of injury", o: ["Hyper flexion", "Hyperextension", "Lateral flexion", "Atlanto-axial dislocation"], a: 1 },
+            { q: "Scalding is caused when liquid in contact has temperature above", o: ["44°C", "50°C", "60° C", "80°C"], a: 2 },
+            { q: "The most important sign for identification of contact firearm inlet is:", o: ["Loss of substance", "Presence of two wounds", "Muzzle imprint around the wound margin", "Abraded inlet"], a: 2 },
+            { q: "Dry burn is caused by:", o: ["Hot liquid or steam", "Flame or hot metals", "Deep x-ray or UV-rays", "Strong acids or alkalies"], a: 1 },
+            { q: "Polar fracture is a:", o: ["Comminuted fracture", "Fissure fracture", "Depressed fracture", "Cut fracture"], a: 1 },
+            { q: "Minimum temp to produce burn is", o: ["40°C", "44°C", "50°C", "60°C"], a: 1 },
+            { q: "Burn type relatively painless", o: ["1st degree", "2nd degree", "3rd degree", "None of the above"], a: 2 },
+            { q: "what are ecbolics", o: ["drugs which increases menstrual flow", "drugs which increase uterine contraction", "which suport growth of foetus", "None of the above"], a: 1 },
+            { q: "all of the following are examples of ecbolics except", o: ["ergot", "synthetic oestrogen", "quinine", "borax"], a: 3 },
+            { q: "section 376 IPC deals with", o: ["criminal abortion", "punishment of rape", "definition of rape", "unnatural sexual offense"], a: 1 },
+            { q: "in artificial insemination homologous donor the sample is collected from", o: ["husband", "donor", "husband and donor", "none of the above"], a: 2 },
+            { q: "what is the surest sing of viriginity", o: ["intact hymen", "regular menstruation", "regular ovulation", "normal hormonal report"], a: 0 },
+            { q: "Hasse's rule is used to detrmine the", o: ["age of aborted foetus", "intra uterine age of the foetus", "age of new born", "none of the above"], a: 0 },
+            { q: "after delivery lochia rubra phase lasts for", o: ["7-10 days", "10-15 days", "4-5 days", "15-20 days"], a: 2 },
+            { q: "The MTP act is applicable for all given grounds except", o: ["therapeutic ground", "eugenic ground", "criminal ground", "humanitarian ground"], a: 2 },
+            { q: "all are the confirm tests of pregnancy except", o: ["USG", "amniosynthesis", "Xray", "HcG"], a: 3 },
+            { q: "section 377 IPC deals with", o: ["punishment of rape", "punishment for gang rape", "unnatural sexual offense", "criminal abortion"], a: 2 },
+            { q: "example of organic paychosis", o: ["senile dementia", "schizophrenia", "paranoid", "panic disorder"], a: 0 },
+            { q: "magistrate inquest is required in psychiatric illness for", o: ["examination of patient", "for admission in mental hospital", "for investigation of patient", "for treatment of patient"], a: 1 },
+            { q: "what is lucid interval", o: ["intrval of treatment of psychiatric patient", "mentally sound phase between 2 attacks", "2 attack phase", "none of the above"], a: 1 },
+            { q: "what is confabulation", o: ["patient gives coherent but false story of recent event", "past event memory", "confused stage of mind", "failure to restore events"], a: 0 },
+            { q: "what is meant by criminal responsibility of mentally ill", o: ["mentally ill person is responible for his crime", "mentally ill person is not responible for his crime", "he should punished for his crime", "none of the above"], a: 1 },
+            { q: "what is meant by delusion", o: ["false but firm belife in something which is not fact", "responses without sensary stimuli", "wronge interpritation of sensary stimuli", "no reaction to sensary stimuli"], a: 0 },
+            { q: "what is hallucination", o: ["false but firm belife in something which is not fact", "responses without sensary stimuli", "wronge interpritation of sensary stimuli", "no reaction to sensary stimuli"], a: 1 },
+            { q: "what is illusion", o: ["false but firm belife in something which is not fact", "responses without sensary stimuli", "wronge interpritation of sensary stimuli", "no reaction to sensary stimuli"], a: 2 },
+            { q: "confabulation is seen in", o: ["korsokoffs psychosis", "schizophrenia", "paranoid", "dementia"], a: 0 },
+            { q: "universal antidote contens following except", o: ["charcoal powder", "mustard powder", "milk of magnesia", "tannic acid"], a: 1 },
+            { q: "gastric lavage is contraindicated in poisoning of", o: ["kerosene", "morpine", "carbolic acid", "dizepam"], a: 0 },
+            { q: "gastric lavage can be done in poisoning of", o: ["carbolic acid", "oxalic acid", "caustic potash", "sulphuric acid"], a: 0 },
+            { q: "true about household emetics except", o: ["use of NaCl", "use of ipecaq", "use of apomorphine", "use of mustard powder"], a: 2 },
+            { q: "BAL is useful in treatment of, except", o: ["arsenic", "lead", "mercury", "cadmiun"], a: 3 },
+            { q: "other name of dimercaprol is", o: ["EDTA", "BAL", "charcoal", "tannic acid"], a: 1 },
+            { q: "which is the most effective route of administration of poison", o: ["injection", "ingestion", "linhalation", "local application"], a: 2 },
+            { q: "synergism means", o: ["addition of symptoms of two poison", "neutralising the effect of poison", "combined effect of 2 poison is greater then their sum", "allergic reaction"], a: 2 },
+            { q: "factors that affect the effect of poison except", o: ["dose", "form of poison", "route of administration", "all of the above"], a: 3 },
+            { q: "ideal homicidal poison has properties, except", o: ["produce disease like symptoms", "large dose", "prolong fetal period", "no traces in postmortem finding"], a: 1 },
+            { q: "which one of the following is the systemic action of oxalic acid poisoning", o: ["hepatic failure", "cardiac failure", "hypoglycemia", "renal failure"], a: 3 },
+            { q: "postal envelop shape crystal in urine seen in poisoning", o: ["carbolic acid", "oxalic acid", "nitric acid", "sulphuric acid"], a: 1 },
+            { q: "hydroquinone and pyrocatechol are the metabolic byproducts of", o: ["acetic acid", "carbolic acid", "oxalicacid", "nitric acid"], a: 1 },
+            { q: "which one of the following is the example of mineral acid", o: ["acetic acid", "carbolic acid", "nitric acid", "oxalic acid"], a: 2 },
+            { q: "xanthoproteic reaction is feature of poisoning from", o: ["sulphuric acid", "carbolic acid", "nitric acid", "oxalic acid"], a: 2 },
+            { q: "vitriolage is", o: ["alcohol poisoning", "throwing acid on person", "commiting suicide", "throwing hot water"], a: 1 },
+            { q: "oxalic acid poisoning results in", o: ["hypernatremia", "hypocalcaenia", "hypokalaemia", "pigmentation of skin"], a: 1 },
+            { q: "greenish discolouration of urine on standing is feature of", o: ["carbolic acid", "oxalic acid", "nitric acid", "sulphuric acid"], a: 0 },
+            { q: "vitriolage is which type of injury", o: ["simple injury", "grievous hurt", "fabricated injury", "None of the above"], a: 1 },
+            { q: "oil of vitriol is commomn name of", o: ["nitric acid", "sulphuric acid", "carbolic acid", "hydrochloric acid"], a: 1 },
+            { q: "Blue line in the gingival margin in case of lead poisoning is due to deposition of:", o: ["Lead chromate", "Lead sulphide", "Lead subacetate", "Lead iodide"], a: 1 },
+            { q: "rain drop sign is seen in", o: ["chronic arsenic poisoning", "chronic lead poisoning", "chronic mercury poisoning", "chronic phosphorus poisoning"], a: 0 },
+            { q: "mercuria lentis is seen in", o: ["mercrury poisoning", "lead poisoning", "arsenic poisoning", "phosphorus poisoning"], a: 0 },
+            { q: "hatters shake is symptom seen in", o: ["mercrury poisoning", "lead poisoning", "arsenic poisoning", "phosphorus poisoning"], a: 0 },
+            { q: "punctate basophilia is sign of", o: ["mercrury poisoning", "lead poisoning", "arsenic poisoning", "phosphorus poisoning"], a: 1 },
+            { q: "elapids are", o: ["neurotoxic", "vasculotoxic", "musculotoxic", "none of the above"], a: 0 },
+            { q: "vipers are", o: ["neurotoxic", "vasculotoxic", "musculotoxic", "none of the above"], a: 1 },
+            { q: "hyderabadi goli is prepared from", o: ["colocynth", "capsicum", "ancardium", "croton tiglium"], a: 1 },
+            { q: "suis are prepred with this veg. irritant poison", o: ["colocynth", "capsicum", "abrus precatorius", "croton tiglium"], a: 2 },
+            { q: "garlic like smell of all discharges is ssen in", o: ["mercrury poisoning", "lead poisoning", "arsenic poisoning", "phosphorus poisoning"], a: 3 },
+            { q: "all of the following are seen in opium poisoning except", o: ["dry skin", "pin point pupil", "flassidity of muscle", "hypotension"], a: 2 },
+            { q: "which poison is known as Road poison", o: ["nux vomica", "dhatura", "curare", "conium"], a: 1 },
+            { q: "korsokoffs psychosis is seen in", o: ["cirrhosis", "chronic alcohol", "marasmus", "CRF"], a: 1 },
+            { q: "MAcEwen's sign is a manifestation of massive intake of:", o: ["Atropine", "Opium", "Methanol", "Ethanol"], a: 3 },
+            { q: "One of the following manifestations is an indication of severe ethanol intoxication:", o: ["Euphoria and sense of well-being", "Marked muscular incoordination", "Increased confidence", "Aggressive behaviour"], a: 1 },
+            { q: "Pathological jealousy is diagnostic of:", o: ["Cocaine intoxication", "Cannabis intoxication", "Alcoholic intoxication", "Tobacco intoxication"], a: 2 },
+            { q: "best antidote for methyl alcohol poisoning is", o: ["dextrose", "ethyl alcohol", "diuresis", "mannitol"], a: 1 },
+            { q: "the duration of action pf phenobarbitone is", o: ["long", "short", "ultra short", "intermediate"], a: 0 },
+            { q: "drug automatism is ssen with", o: ["alcohol poisoning", "barbiturate", "diazepam", "morphine"], a: 1 },
+            { q: "Mc Evan's sign in alcohol poisoning refers to changes in the", o: ["blood pressure", "pupillary size", "reflexes", "respiratory rate"], a: 1 },
+            { q: "all are the examples of cardic poison except", o: ["digitalis", "tobacco", "ancardium", "oleander"], a: 2 },
+            { q: "necotine replacemtn therapy, nicotine patch is applied over", o: ["nose", "skin", "mucous menbrane", "none of the above"], a: 1 },
+            { q: "nerium odorum containing cardiac glycosides, except", o: ["neriodorin", "neriodorein", "karabin", "digitalin"], a: 3 },
+            { q: "aconite contains active alkoloids, except", o: ["aconitine", "aconine", "picratonitine", "neriodorein"], a: 3 },
+            { q: "which cardiac poison os also known as mitha bish", o: ["digitalis", "tobacco", "aconite", "oleander"], a: 2 },
+            { q: "habitual smoking leads to tobacco heart includes symptoms,except", o: ["angina pectoris", "extra systole", "irregularity in pulse", "all of the above"], a: 3 },
+            { q: "lethal dose of nicotine for adult is", o: ["40-60 mg", "less than 20 mg", "10-30 mg", "15-30 mg"], a: 0 },
+            { q: "which part of the tobacco plant is non poisonous", o: ["leaves", "root", "dried seed", "stem"], a: 2 },
+            { q: "fatal dose of cerebra thevetia is", o: ["4-5 seeds", "8-10 seeds", "1-2 seeds", "6-7 seeds"], a: 1 },
+            { q: "fatal dose of aconite root is", o: ["1 gram", "5 gram", "3 gram", "10 gram"], a: 0 },
+            { q: "The second stage of acute acetaminophen toxicity is characterized by:", o: ["Abnormalities of liver function tests", "Bleeding tendencies due to coagulation defect", "Nausea and malaise", "Right upper quadrant pain and tenderness"], a: 0 },
+            { q: "Which of the following is specific antidote for acute acetaminophen toxicity:", o: ["BAL", "Mucomyst", "EDTA", "DMSA"], a: 1 },
+            { q: "In case of foodborne botulism, the toxin is:", o: ["Formed in the duodenum", "Formed in the colon", "Formed in the intestine", "Formed in the canned food before consumption"], a: 3 },
+            { q: "In case of acute CO poisoning, coma and death with lively red colour occur at a carboxy haemoglobin level of:", o: ["10-20%", "20-30%", "30-40%", "50-60%"], a: 3 }
+        ];
+
+        // Map it back to the expected array format for the rendering script
+        const questions = qData.map(item => ({ q: item.q, options: item.o, ans: item.a }));
+
+        const quizContainer = document.getElementById('quizContainer');
+        const startSelect = document.getElementById('startSelect');
+        const rateSlider = document.getElementById('speechRate');
+        const rateDisplay = document.getElementById('rateDisplay');
+        const synth = window.speechSynthesis;
+        let isSequentialReading = false;
+        let currentSequenceIndex = 0;
+
+        // Initialize App
+        function initApp() {
+            renderQuestions();
+            populateSelect();
+
+            // Update pace display on slider change
+            rateSlider.addEventListener('input', function () {
+                rateDisplay.textContent = this.value + 'x';
+            });
+        }
+
+        // Render Questions HTML efficiently using Document Fragment
+        function renderQuestions() {
+            quizContainer.innerHTML = '';
+            const fragment = document.createDocumentFragment();
+
+            questions.forEach((q, index) => {
+                const labels = ['A', 'B', 'C', 'D'];
+                let optionsHtml = '';
+
+                q.options.forEach((opt, optIdx) => {
+                    optionsHtml += `
+                        <label id="label-${index}-${optIdx}" class="flex items-center p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                            <input type="radio" name="q${index}" value="${optIdx}" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <span class="ml-3 font-medium text-slate-700">${labels[optIdx]}.</span>
+                            <span class="ml-2 text-slate-600">${opt}</span>
+                        </label>
+                    `;
+                });
+
+                const cardHtml = `
+                    <div id="questionCard-${index}" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-slate-800"><span class="text-blue-600 mr-1">Q${index + 1}.</span> ${q.q}</h3>
+                        </div>
+                        <div class="space-y-2 mb-6">
+                            ${optionsHtml}
+                        </div>
+                        <div class="flex flex-wrap gap-3 border-t border-slate-100 pt-4">
+                            <button onclick="showHint(${index})" class="bg-amber-100 hover:bg-amber-200 text-amber-800 px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-2">
+                                <i class="fas fa-lightbulb"></i> Hint / Show Answer
+                            </button>
+                            <button onclick="readSingleQuestion(${index})" class="bg-indigo-100 hover:bg-indigo-200 text-indigo-800 px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-2">
+                                <i class="fas fa-volume-up"></i> Read Out Loud
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = cardHtml;
+                fragment.appendChild(tempDiv.firstElementChild);
+            });
+
+            quizContainer.appendChild(fragment);
+        }
+
+        // Populate Select Dropdown
+        function populateSelect() {
+            const fragment = document.createDocumentFragment();
+            questions.forEach((q, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = `Q${index + 1}`;
+                fragment.appendChild(option);
+            });
+            startSelect.appendChild(fragment);
+        }
+
+        // Show Hint (Highlight correct answer)
+        function showHint(qIndex) {
+            const correctOptIdx = questions[qIndex].ans;
+            const targetLabel = document.getElementById(`label-${qIndex}-${correctOptIdx}`);
+
+            // Remove previous highlights in this question
+            for (let i = 0; i < 4; i++) {
+                const lbl = document.getElementById(`label-${qIndex}-${i}`);
+                if (lbl) lbl.classList.remove('correct-highlight');
+            }
+
+            // Add highlight and check radio button
+            if (targetLabel) {
+                targetLabel.classList.add('correct-highlight');
+                const radio = targetLabel.querySelector('input[type="radio"]');
+                if (radio) radio.checked = true;
+            }
+        }
+
+        // Clear all reading visual highlights
+        function clearReadingHighlights() {
+            const activeCards = document.querySelectorAll('.reading-active');
+            activeCards.forEach(card => card.classList.remove('reading-active'));
+        }
+
+        // Core Speech Function
+        function speakText(text, onEndCallback = null) {
+            if (synth.speaking) synth.cancel(); // Stop current speech
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = parseFloat(rateSlider.value); // Use value from slider
+
+            if (onEndCallback) {
+                utterance.onend = onEndCallback;
+            }
+
+            synth.speak(utterance);
+        }
+
+        // Read Single Question & Answer
+        function readSingleQuestion(index) {
+            stopReading(); // Stop sequential if running
+            clearReadingHighlights();
+
+            const card = document.getElementById(`questionCard-${index}`);
+            card.classList.add('reading-active');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            const qText = "Question " + (index + 1) + ". " + questions[index].q;
+            const correctIdx = questions[index].ans;
+            const ansText = "Answer. " + questions[index].options[correctIdx];
+
+            // Speak Question, then Answer
+            speakText(qText, () => {
+                // Short pause, show hint, then read answer
+                setTimeout(() => {
+                    showHint(index);
+                    speakText(ansText, () => {
+                        card.classList.remove('reading-active');
+                    });
+                }, 500);
+            });
+        }
+
+        // Start Sequential Reading
+        function startSequentialReading() {
+            const startIndex = parseInt(startSelect.value);
+            isSequentialReading = true;
+            currentSequenceIndex = startIndex;
+
+            document.getElementById('startReadingBtn').classList.add('hidden');
+            document.getElementById('stopReadingBtn').classList.remove('hidden');
+
+            processSequence();
+        }
+
+        // Process loop for sequential reading
+        function processSequence() {
+            if (!isSequentialReading || currentSequenceIndex >= questions.length) {
+                stopReading();
+                return;
+            }
+
+            clearReadingHighlights();
+            const index = currentSequenceIndex;
+            const card = document.getElementById(`questionCard-${index}`);
+            card.classList.add('reading-active');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            const qText = "Question " + (index + 1) + ". " + questions[index].q;
+            const correctIdx = questions[index].ans;
+            const ansText = "Answer. " + questions[index].options[correctIdx];
+
+            speakText(qText, () => {
+                if (!isSequentialReading) return;
+
+                setTimeout(() => {
+                    if (!isSequentialReading) return;
+                    showHint(index);
+
+                    speakText(ansText, () => {
+                        if (!isSequentialReading) return;
+                        card.classList.remove('reading-active');
+                        currentSequenceIndex++;
+
+                        // Update the dropdown to match the current reading index
+                        if (currentSequenceIndex < questions.length) {
+                            startSelect.value = currentSequenceIndex;
+                        }
+
+                        // 1.5 second pause between questions
+                        setTimeout(() => {
+                            if (isSequentialReading) processSequence();
+                        }, 1500);
+                    });
+                }, 600); // Pause before reading answer
+            });
+        }
+
+        // Stop all reading
+        function stopReading() {
+            isSequentialReading = false;
+            synth.cancel();
+            clearReadingHighlights();
+
+            document.getElementById('startReadingBtn').classList.remove('hidden');
+            document.getElementById('stopReadingBtn').classList.add('hidden');
+        }
+
+        // Stop speech if user leaves page
+        window.addEventListener('beforeunload', () => {
+            if (synth) synth.cancel();
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initApp);
+
+    </script>
+</body>
+
+</html>
